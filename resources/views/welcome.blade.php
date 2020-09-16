@@ -128,5 +128,6 @@
                 </div>
             </div>
         </div>
+        @include('cookieConsent::index')
     </body>
 </html>
