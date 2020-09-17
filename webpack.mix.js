@@ -15,3 +15,21 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
     require('postcss-import'),
     require('tailwindcss'),
 ]);
+
+// mix.styles([
+// 'resources/css/foodstaff.css'
+// ],  'public/css/foodstaff.css');
+
+
+mix.sass('resources/sass/application.scss', 'public/css');
+
+    mix.scripts([
+         'resources/js/slider.js',
+         'resources/js/select.js'
+         // 'resources/js/trix.js'
+         // 'resources/js/summernote.js',
+      ],  'public/js/compine.js');
+
+      mix.scripts([
+              'node_modules/slugify/slugify.js',
+          ],  'public/js/slug.js');
