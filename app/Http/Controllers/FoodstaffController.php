@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class FoodstaffController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth', ['except' => ['index', 'show']]);
+  }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,7 @@ class FoodstaffController extends Controller
      */
     public function index()
     {
-        //
+        return view ('foodstaff.index');
     }
 
     /**
@@ -24,7 +28,7 @@ class FoodstaffController extends Controller
      */
     public function create()
     {
-        //
+        return view ('foodstaff.create');
     }
 
     /**

@@ -12,8 +12,22 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/application.css') }}">
+
+        @stack('styles')
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+
+        <!-- Summernote -->
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js" defer></script>
 
         @livewireStyles
+        {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+
+
+        <!-- Compine JS -->
+        <script src="{{ asset('js/compine.js') }}" defer></script>
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script>
@@ -41,6 +55,23 @@
 
                         <!-- Settings Dropdown -->
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
+
+                          <!--Bootstrap Navigation links -->
+                          <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                              <a class="nav-link navigation-item" href="{{ url('/') }}">Αρχική</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link navigation-item" href="{{route('recipes.index')}}">Συνταγές</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link navigation-item" href="{{ url('/') }}">Γλωσσάρι</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link navigation-item" href="{{ url('/') }}">Contact</a>
+                            </li>
+                          </ul>
+                          <!-- End Bootstrap navigation links -->
                             <x-jet-dropdown align="right" width="48">
                                 <x-slot name="trigger">
                                     <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
@@ -203,18 +234,34 @@
             <!-- Page Heading -->
             <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
+                    {{-- {{ $header }} --}}
                 </div>
             </header>
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+              {{-- Vue confilct with alpine.js --}}
+              <div id="app">
+              @yield('content')
+                {{-- {{ $slot }} --}}
+              </div>
             </main>
         </div>
 
         @stack('modals')
 
+
+        @stack('scripts')
+        {{-- Summernote--}}
+        <script src="{{ asset('js/summernote.js') }}" defer></script>
+        <script src="{{ asset('js/dynamic.js') }}" defer></script>
+        <script src="{{ asset('js/slug.js') }}" defer></script>
+        <script src="{{ asset('js/slugconfig.js') }}" defer></script>
+        <script src="{{ asset('js/previewPhoto.js') }}" defer></script>
+        <script src="{{ asset('js/stepform.js') }}" defer></script>
         @livewireScripts
+
+
+
     </body>
 </html>

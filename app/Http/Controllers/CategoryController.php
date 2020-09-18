@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+  public function __construct()
+  {
+    $this->middleware('auth', ['except' => ['index', 'show']]);
+  }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+      $categories = Category::with('children')->whereNull('parent_id')->get();
+
+      return view('admin.categories.index')->with([
+      'categories'  => $categories
+      ]);
     }
 
     /**
@@ -35,7 +45,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $validatedData = $this->validate($request, [
+          'name'      => 'required|min:3|max:255|string',
+          'parent_id' => 'sometimes|nullable|numeric'
+        ]);
+
+      Category::create($validatedData);
+
+      return redirect()->route('categories.index')->withSuccess('You have successfully created a Category!');
     }
 
     /**
@@ -46,7 +63,12 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+      // dd($category->id);
+       //All recipes from selected category
+        // $recipes = Recipe::where(recipes()->categories, $category->id,)->get();
+        $recipes = Category::find($category->id)->recipes()->orderBy('name')->get();
+        // dd($recipes);
+          return view('recipe.indexByCategory', compact('recipes'));
     }
 
     /**
@@ -69,7 +91,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+      $validatedData = $this->validate($request, [
+          'name'  => 'required|min:3|max:255|string'
+      ]);
+
+      $category->update($validatedData);
+
+      return redirect()->route('categories.index')->withSuccess('You have successfully updated a Category!');
     }
 
     /**
@@ -80,6 +108,18 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+      if ($category->children) {
+          foreach ($category->children()->with('posts')->get() as $child) {
+              foreach ($child->posts as $post) {
+                  $post->update(['category_id' => NULL]);
+              }
+          }
+
+          $category->children()->delete();
+      }
+
+      $category->delete();
+
+      return redirect()->route('categories.index')->withSuccess('You have successfully deleted a Category!');
     }
 }

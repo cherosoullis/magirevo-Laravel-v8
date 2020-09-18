@@ -16,18 +16,22 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
     require('tailwindcss'),
 ]);
 
-// mix.styles([
-// 'resources/css/foodstaff.css'
-// ],  'public/css/foodstaff.css');
+  mix.styles([
+  'node_modules/bootstrap-slider/dist/css/bootstrap-slider.css',
+
+  //'node_modules/select2/dist/css/select2.min.css'
+],  'public/css/bootstrap-slider.css');
+
+mix.styles([
+'resources/css/foodstaff.css'
+],  'public/css/foodstaff.css');
 
 
 mix.sass('resources/sass/application.scss', 'public/css');
 
     mix.scripts([
-         'resources/js/slider.js',
+         // 'resources/js/slider.js',
          'resources/js/select.js'
-         // 'resources/js/trix.js'
-         // 'resources/js/summernote.js',
       ],  'public/js/compine.js');
 
       mix.scripts([

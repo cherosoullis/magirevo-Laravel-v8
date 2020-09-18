@@ -5,7 +5,7 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap.scss';
 
 // Font Awesome
 @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
@@ -14,7 +14,7 @@
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
 
 //Bootstrap Slider
-@import '~bootstrap-slider/dist/css/bootstrap-slider.min.css';
+@import '~bootstrap-slider/dist/css/bootstrap-slider.css';
 
 #ex1Slider .slider-selection {
 	background: #BABABA;
@@ -45,7 +45,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e696', end
     flex-grow: unset;
 }
 // //Bootstrap bootstrap-table
-// @import '~bootstrap-table/dist/bootstrap-table.css';
+@import '~bootstrap-table/dist/bootstrap-table.css';
 //Step form
 .container {
 	 margin-top: 10px;

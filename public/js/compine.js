@@ -1,10 +1,3 @@
-//initialize Slider
-$('#ex1').slider({
-	// formatter: function(value) {
-	// 	return 'Ποσότητα: ' + value;
-	// }
-});
-
 //initialize select2 in create form
 $(document).ready(function() {
 //global defaults
