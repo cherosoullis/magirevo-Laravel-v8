@@ -14,7 +14,9 @@
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
 
 //Bootstrap Slider
-@import '~bootstrap-slider/dist/css/bootstrap-slider.css';
+// @import '~bootstrap-slider/dist/css/bootstrap-slider.css';
+@import '~bootstrap-slider/src/sass/bootstrap-slider.scss';
+
 
 #ex1Slider .slider-selection {
 	background: #BABABA;
@@ -45,7 +47,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e696', end
     flex-grow: unset;
 }
 // //Bootstrap bootstrap-table
-@import '~bootstrap-table/dist/bootstrap-table.css';
+@import '~bootstrap-table/src/bootstrap-table.scss';
 //Step form
 .container {
 	 margin-top: 10px;
