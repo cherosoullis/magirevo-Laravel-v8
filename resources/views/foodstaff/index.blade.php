@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.application')
 
 @push('styles')
   <link href="{{ asset('css/foodstaff.css') }}" rel="stylesheet">

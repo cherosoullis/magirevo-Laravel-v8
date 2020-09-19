@@ -21,10 +21,11 @@ use App\Http\Controllers\TagController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-    // return view('dashboard');
-});
+// Route::get('/', function () {
+//     return view('index');
+//     // return view('dashboard');
+// });
+Route::get('/', [HomeController::class, 'home'])->name('start');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
