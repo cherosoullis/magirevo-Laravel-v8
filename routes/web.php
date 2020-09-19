@@ -22,8 +22,8 @@ use App\Http\Controllers\TagController;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
-    return view('dashboard');
+    return view('welcome');
+    // return view('dashboard');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
