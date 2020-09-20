@@ -28,3 +28,12 @@ mix.sass('resources/sass/application.scss', 'public/css');
       mix.scripts([
               'node_modules/slugify/slugify.js',
           ],  'public/js/slug.js');
+
+      //Select 2
+      // @import '~select2/dist/css/select2.min.css';
+      //Select2 Bootstrap theme
+      // @import '~@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css';
+      mix.styles([
+        'node_modules/select2/dist/css/select2.min.css',
+        'node_modules/@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css',
+      ],  'public/css/select.css');

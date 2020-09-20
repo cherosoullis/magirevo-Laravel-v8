@@ -163,7 +163,7 @@
     </div>
 
     <div class="form-group col-md-2">
-      <p class="font-weight-bold">Περιστάστις</p>
+      <p class="font-weight-bold">Περιστάστεις</p>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <div class="custom-control custom-checkbox">

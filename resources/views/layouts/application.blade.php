@@ -21,8 +21,7 @@
     <script src="{{ asset('js/select.js') }}" defer></script> --}}
     <livewire:styles />
 
-    <!-- Compine JS -->
-    <script src="{{ asset('js/compine.js') }}" defer></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -30,6 +29,8 @@
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('css/application.css') }}" rel="stylesheet">
+    {{-- For Select2 --}}
+    <link href="{{ asset('css/select.css') }}" rel="stylesheet">
     @stack('styles')
 </head>
 <body>
@@ -127,7 +128,8 @@
             @yield('content')
         </main>
     </div>
-
+    <!-- Compine JS -->
+    <script src="{{ asset('js/compine.js') }}" defer></script>
     {{-- Summernote--}}
     <script src="{{ asset('js/summernote.js') }}" defer></script>
     <script src="{{ asset('js/dynamic.js') }}" defer></script>

@@ -68,16 +68,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e696', end
 }
 
 
-
-//Select 2
-@import '~select2/dist/css/select2.min.css';
-
-
 //Hover CSS
 @import '~hover.css/scss/hover.scss';
 
-//Select2 Bootstrap theme
-@import '~@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css';
+
 
 //fond Awesome change @font
 .form-group .fa-thumbs-down, .form-group .fa-thumbs-up {

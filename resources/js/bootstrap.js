@@ -18,11 +18,11 @@ window._ = require('lodash');
      var mySlider = new Slider();
  } catch (e) {}
 
- $('#ex1').slider({
- 	// formatter: function(value) {
- 	// 	return 'Ποσότητα: ' + value;
- 	// }
- });
+ // $('#ex1').slider({
+ // 	// formatter: function(value) {
+ // 	// 	return 'Ποσότητα: ' + value;
+ // 	// }
+ // });
 window.axios = require('axios');
 
 
