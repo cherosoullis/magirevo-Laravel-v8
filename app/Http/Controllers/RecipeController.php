@@ -16,8 +16,8 @@ use App\Models\Feature;
 use Response;
 use Image;
 use Storage;
+// use Illuminate\Support\Facades\Auth;
 use Auth;
-
 class RecipeController extends Controller
 {
   public function __construct()
@@ -70,7 +70,7 @@ class RecipeController extends Controller
 
 
 
-              // dd($request);
+              dd($request);
               $validatedData = $request->validate([
               'name' => 'required|max:90',
               'slug' => 'required|max:255',//unique:slug|
@@ -170,16 +170,22 @@ class RecipeController extends Controller
 
             //Checkbox store
             $feaures = New Feature;
-
-            If($request->input('helthy')){
-              $feaures->helthy =1;
-            }
-            If($request->input('quick')){
-              $feaures->quick =1;
-            }
-            If($request->input('easy')){
+            $feaures->helthy = $request->boolean('helthy');
+            // If($request->input('helthy')){
+            //   $feaures->helthy =1;
+            // }
+            if ($request->has('quick')) {
+                $feaures->quick =1;
+              }
+            // If($request->input('quick')){
+            //   $feaures->quick =1;
+            // }
+            if ($request->filled('easy')) {
               $feaures->easy =1;
             }
+            // If($request->input('easy')){
+            //   $feaures->easy =1;
+            // }
             If($request->input('sugarfree')){
               $feaures->sugarfree =1;
             }

@@ -137,7 +137,7 @@
     <script src="{{ asset('js/stepform.js') }}" defer></script>
     @stack('scripts')
     <livewire:scripts />
-
+  {{-- @include('cookieConsent::index') --}}
 
 </body>
 </html>

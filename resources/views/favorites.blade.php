@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.application')
 
 @section('content')
 <div class="container">
@@ -12,7 +12,7 @@
   @forelse ($myFavorites as $myFavorite)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                      <h1><a href="{{route('recipes.show', $myFavorite->slug)}}">{{ $myFavorite->name }}</a> </h1>  
+                      <h1><a href="{{route('recipes.show', $myFavorite->slug)}}">{{ $myFavorite->name }}</a> </h1>
                     </div>
 
                     <div class="panel-body">
