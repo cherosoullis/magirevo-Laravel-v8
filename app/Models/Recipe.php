@@ -30,29 +30,29 @@ class Recipe extends Model
     }
 
     public function user() {
-      return $this->belongsTo('App\User');
+      return $this->belongsTo('App\Models\User');
     }
 
     public function categories()
     {
-      return $this->belongsToMany('App\Category');
+      return $this->belongsToMany('App\Models\Category');
     }
     public function executions()
     {
-        return $this->hasMany('App\Execution');
+        return $this->hasMany('App\Models\Execution');
     }
     public function tags()
     {
-      return $this->belongsToMany('App\Tag');
+      return $this->belongsToMany('App\Models\Tag');
     }
 
     public function cuisine() {
-      return $this->belongsTo('App\Cuisine');
+      return $this->belongsTo('App\Models\Cuisine');
     }
 
     public function ingredients()
     {
-      return $this->hasMany('App\Ingredient');
+      return $this->hasMany('App\Models\Ingredient');
     }
 
     // public function foodstaffs()
@@ -75,6 +75,6 @@ class Recipe extends Model
 
     public function reviews()
     {
-      return $this->hasMany('App\Review');
+      return $this->hasMany('App\Models\Review');
     }
 }

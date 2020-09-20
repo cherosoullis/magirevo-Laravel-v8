@@ -15,17 +15,17 @@ class Ingredient extends Model
 
     public function recipe(){
 
-        return $this->belongsTo('App\Recipe');
+        return $this->belongsTo('App\Models\Recipe');
     }
 
   //https://laravel.com/docs/8.x/eloquent-relationships#one-to-one
     public function childrens()
     {
-      return $this->hasMany('App\Ingredient', 'parent_id', 'heading_id');//return $this->hasOne('App\Phone', 'foreign_key', 'local_key');
+      return $this->hasMany('App\Models\Ingredient', 'parent_id', 'heading_id');//return $this->hasOne('App\Phone', 'foreign_key', 'local_key');
     }
 
     public function foodstaff()
     {
-      return $this->belongsTo('App\Foodstaff');//return $this->hasOne('App\Phone', 'foreign_key', 'local_key');
+      return $this->belongsTo('App\Models\Foodstaff');//return $this->hasOne('App\Phone', 'foreign_key', 'local_key');
     }
 }

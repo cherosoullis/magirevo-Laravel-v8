@@ -12,6 +12,6 @@ class Tag extends Model
     protected $fillable = ['name', 'slug'];
 
     public function recipes() {
-      return $this->belongsToMany('App\Recipe');
+      return $this->belongsToMany('App\Models\Recipe');
     }
 }

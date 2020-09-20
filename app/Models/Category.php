@@ -14,11 +14,11 @@ class Category extends Model
 
 
     public function recipes() {
-      return $this->belongsToMany('App\Recipe');
+      return $this->belongsToMany('App\Models\Recipe');
     }
 
     public function children()
     {
-      return $this->hasMany('App\Category', 'parent_id');
+      return $this->hasMany('App\Models\Category', 'parent_id');
     }
 }

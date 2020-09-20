@@ -12,11 +12,11 @@ class Foodstaff extends Model
     protected $fillable = ['name','slug' ,'image','description'];
 
     public function ingredients() {
-      return $this->hasMany('App\Ingredient');
+      return $this->hasMany('App\Models\Ingredient');
     }
 
     public function recipes()
     {
-       return $this->hasManyThrough('App\Ingredient', 'App\Recipe');
+       return $this->hasManyThrough('App\Models\Ingredient', 'App\Recipe');
     }
 }

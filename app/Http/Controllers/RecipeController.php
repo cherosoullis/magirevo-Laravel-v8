@@ -52,6 +52,7 @@ class RecipeController extends Controller
       $foodstaffs=Foodstaff::all();
       $categories = Category::where('parent_id', '=', null)->get();
       // dd($categories);
+      // dd($categories);
       // $categories=Category::all();
       $cuisines=Cuisine::all();
       $tags=Tag::all();
