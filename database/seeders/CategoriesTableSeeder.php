@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
@@ -12,12 +13,12 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('categories')->delete();
-        
+
         \DB::table('categories')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'ΦΑΓΗΤΑ',
@@ -28,7 +29,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-02 18:42:20',
                 'updated_at' => '2020-09-02 20:39:23',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'name' => 'ΖΑΧΑΡΟΠΛΑΣΤΙΚΗ',
@@ -39,7 +40,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-02 18:44:20',
                 'updated_at' => '2020-09-02 18:44:20',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'name' => 'ΡΟΦΗΜΑΤΑ',
@@ -50,7 +51,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-02 18:50:40',
                 'updated_at' => '2020-09-04 19:22:41',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'name' => 'Ορεκτικά',
@@ -61,7 +62,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-04 19:30:01',
                 'updated_at' => '2020-09-04 19:30:01',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'name' => 'Σαλάτες',
@@ -72,7 +73,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-04 19:31:32',
                 'updated_at' => '2020-09-04 19:32:11',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'name' => 'Λαχανικά',
@@ -83,7 +84,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-04 19:53:47',
                 'updated_at' => '2020-09-04 19:53:47',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'name' => 'Όσπρια',
@@ -94,7 +95,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-04 20:06:13',
                 'updated_at' => '2020-09-04 20:06:13',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'name' => 'Πίτσες',
@@ -105,7 +106,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-04 20:07:15',
                 'updated_at' => '2020-09-04 20:07:15',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'name' => 'Ζυμαρικά',
@@ -116,7 +117,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-04 20:08:15',
                 'updated_at' => '2020-09-04 20:08:15',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'name' => 'Ρύζι',
@@ -127,7 +128,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-04 20:13:02',
                 'updated_at' => '2020-09-04 20:13:02',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'name' => 'Πουλερικά',
@@ -138,7 +139,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-04 20:18:13',
                 'updated_at' => '2020-09-04 20:18:13',
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'name' => 'Ψαρικά',
@@ -149,7 +150,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-04 20:24:20',
                 'updated_at' => '2020-09-04 20:24:20',
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'name' => 'Θαλασσινά',
@@ -160,7 +161,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-04 20:25:59',
                 'updated_at' => '2020-09-04 20:25:59',
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 14,
                 'name' => 'Κρεατικά',
@@ -171,7 +172,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-04 20:27:43',
                 'updated_at' => '2020-09-04 20:27:43',
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 15,
                 'name' => 'Ψωμιά',
@@ -182,7 +183,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-04 20:50:55',
                 'updated_at' => '2020-09-04 20:50:55',
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 16,
                 'name' => 'Σούπες',
@@ -193,7 +194,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-05 05:16:40',
                 'updated_at' => '2020-09-05 05:16:40',
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 17,
                 'name' => 'Κέικς',
@@ -204,7 +205,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-05 19:19:10',
                 'updated_at' => '2020-09-05 19:24:19',
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 18,
                 'name' => 'Τούρτες',
@@ -215,7 +216,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-05 19:21:05',
                 'updated_at' => '2020-09-05 19:21:05',
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 19,
                 'name' => 'Παγωτά',
@@ -226,7 +227,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-05 19:25:44',
                 'updated_at' => '2020-09-05 19:25:44',
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 20,
                 'name' => 'Συροπιαστα',
@@ -237,7 +238,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-05 19:30:59',
                 'updated_at' => '2020-09-05 19:40:37',
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 21,
                 'name' => 'Μπισκότα',
@@ -248,7 +249,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-05 19:33:28',
                 'updated_at' => '2020-09-05 19:33:28',
             ),
-            21 => 
+            21 =>
             array (
                 'id' => 22,
                 'name' => 'Κρέμες',
@@ -259,7 +260,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-05 19:36:02',
                 'updated_at' => '2020-09-05 19:36:02',
             ),
-            22 => 
+            22 =>
             array (
                 'id' => 23,
                 'name' => 'Μαρμελάδες',
@@ -270,7 +271,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-05 19:46:48',
                 'updated_at' => '2020-09-05 19:46:48',
             ),
-            23 => 
+            23 =>
             array (
                 'id' => 24,
                 'name' => 'Πίττες',
@@ -281,7 +282,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-05 19:50:39',
                 'updated_at' => '2020-09-05 19:50:39',
             ),
-            24 => 
+            24 =>
             array (
                 'id' => 25,
                 'name' => 'Smoothies',
@@ -292,7 +293,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-05 19:58:01',
                 'updated_at' => '2020-09-06 08:07:04',
             ),
-            25 => 
+            25 =>
             array (
                 'id' => 26,
                 'name' => 'Καφέδες',
@@ -303,7 +304,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-05 19:58:36',
                 'updated_at' => '2020-09-05 19:58:36',
             ),
-            26 => 
+            26 =>
             array (
                 'id' => 27,
                 'name' => 'Κοκτέιλς',
@@ -314,7 +315,7 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2020-09-05 20:00:23',
                 'updated_at' => '2020-09-05 20:03:44',
             ),
-            27 => 
+            27 =>
             array (
                 'id' => 28,
                 'name' => 'Χυμοί',
@@ -326,7 +327,7 @@ class CategoriesTableSeeder extends Seeder
                 'updated_at' => '2020-09-06 08:10:41',
             ),
         ));
-        
-        
+
+
     }
 }

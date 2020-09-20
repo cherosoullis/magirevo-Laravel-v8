@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class CuisinesTableSeeder extends Seeder
@@ -12,12 +14,12 @@ class CuisinesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('cuisines')->delete();
-        
+
         \DB::table('cuisines')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 3,
                 'name' => 'Ελληνική',
@@ -25,7 +27,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 7,
                 'name' => 'Ιταλική',
@@ -33,7 +35,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 6,
                 'name' => 'Ισπανική',
@@ -41,7 +43,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 2,
                 'name' => 'Γαλλική',
@@ -49,7 +51,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 11,
                 'name' => 'Μαροκινή',
@@ -57,7 +59,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 15,
                 'name' => 'Ταϊλανδέζικη',
@@ -65,7 +67,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 5,
                 'name' => 'Ινδική',
@@ -73,7 +75,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'name' => 'Κινεζική',
@@ -81,7 +83,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 4,
                 'name' => 'Ιαπωνική',
@@ -89,7 +91,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 13,
                 'name' => 'Περσική',
@@ -97,7 +99,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 1,
                 'name' => 'Ασιατική',
@@ -105,7 +107,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'name' => 'Μεσογειακή',
@@ -113,7 +115,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 14,
                 'name' => 'Πολίτικη',
@@ -121,7 +123,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 9,
                 'name' => 'Κυπριακή',
@@ -129,7 +131,7 @@ class CuisinesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 10,
                 'name' => 'Λιβανέζικη',
@@ -138,7 +140,7 @@ class CuisinesTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }
