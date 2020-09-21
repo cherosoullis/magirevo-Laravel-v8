@@ -16,8 +16,8 @@ use App\Models\Feature;
 use Response;
 use Image;
 use Storage;
-// use Illuminate\Support\Facades\Auth;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+// use Auth;
 class RecipeController extends Controller
 {
   public function __construct()
@@ -71,7 +71,7 @@ class RecipeController extends Controller
 
 
 
-              dd($request);
+              // dd($request);
               $validatedData = $request->validate([
               'name' => 'required|max:90',
               'slug' => 'required|max:255',//unique:slug|
