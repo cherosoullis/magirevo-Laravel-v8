@@ -17,6 +17,9 @@ use Response;
 use Image;
 use Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
+// use Session;
 // use Auth;
 class RecipeController extends Controller
 {
@@ -287,8 +290,10 @@ class RecipeController extends Controller
                     $img->removeAttribute('src');
                     $img->setAttribute('src', $image_name);
                   }
-
-                  $description = $dom->saveHTML();
+                  // dd($dom->saveXML());
+                  // $description = $dom->saveHTML();
+                  //It is stored as xml that is why I save as xml,
+                  $description = $dom->saveXML();
 
                   $execution->body = $description;
                   //END SAVING IMAGE
@@ -405,15 +410,12 @@ class RecipeController extends Controller
      * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function show(Recipe $recipe)
+    public function show(Request $request, Recipe $recipe)//request is used for session
     {
-      // dd($recipe->slug);
-      // $recipe= Recipe::where('slug', $slug)->first();
-      $recipe= Recipe::where('slug', $recipe->slug)->first();
-      // dd($recipe->ingredients);
 
-     // dd('hello');
-      // return view('recipe.show')->with('recipe', $recipe);
+      $recipe= Recipe::where('slug', $recipe->slug)->first();
+
+      // $randomrecipes = Recipe::approved()->published()->take(3)->inRandomOrder()->get();
       return view('recipe.show', compact('recipe'));//->with('recipe', $recipe);
     }
 

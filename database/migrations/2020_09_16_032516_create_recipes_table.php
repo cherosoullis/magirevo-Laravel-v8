@@ -36,6 +36,7 @@ class CreateRecipesTable extends Migration
             $table->string('source')->nullable();
             $table->string('source_url')->nullable();
             $table->integer('votes')->nullable();
+            // $table->integer('view_count')->default(0);
             $table->timestamps();
         });
     }
