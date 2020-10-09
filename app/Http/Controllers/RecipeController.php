@@ -413,6 +413,12 @@ class RecipeController extends Controller
     public function show(Request $request, Recipe $recipe)//request is used for session
     {
 
+      $Key = 'recipe' . $recipe->id;
+        if (!Session::has($Key)) {
+            // dd('has kes');
+        DB::table('recipes')->where('id', $recipe->id)->increment('view_count', 1);
+         Session::put($Key, 1);
+       }
       $recipe= Recipe::where('slug', $recipe->slug)->first();
 
       // $randomrecipes = Recipe::approved()->published()->take(3)->inRandomOrder()->get();

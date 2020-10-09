@@ -40,6 +40,10 @@
                     ></favorite>
                 </div>
             @endif
+            <div class="text-right text-muted" >
+            Views:  {{$recipe->view_count}}
+            </div>
+
             </div>
           </div>
         </div>
