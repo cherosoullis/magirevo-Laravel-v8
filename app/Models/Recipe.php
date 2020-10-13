@@ -38,6 +38,12 @@ class Recipe extends Model
     {
       return $this->belongsToMany('App\Models\Category');
     }
+
+    public function feature()
+    {
+        return $this->hasOne('App\Models\Feature', 'id');
+    }
+
     public function executions()
     {
         return $this->hasMany('App\Models\Execution');
@@ -58,7 +64,7 @@ class Recipe extends Model
 
     // public function foodstaffs()
     // {
-    //   return $this->hasManyThrough('App\Foodstaff', 'App\Ingredient');
+    //   return $this->hasManyThrough('App\Models\Foodstaff', 'App\Models\Ingredient');
     // }
 
     // public function foodstaffs()

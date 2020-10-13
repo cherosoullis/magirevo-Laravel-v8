@@ -13,10 +13,11 @@ class Foodstaff extends Model
 
     public function ingredients() {
       return $this->hasMany('App\Models\Ingredient');
+      // return $this->belongsTo('App\Models\Ingredient');
     }
 
     public function recipes()
     {
-       return $this->hasManyThrough('App\Models\Ingredient', 'App\Recipe');
+       return $this->hasManyThrough('App\Models\Ingredient', 'App\Models\Recipe');
     }
 }

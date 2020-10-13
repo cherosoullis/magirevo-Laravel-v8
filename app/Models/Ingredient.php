@@ -26,6 +26,9 @@ class Ingredient extends Model
 
     public function foodstaff()
     {
-      return $this->belongsTo('App\Models\Foodstaff');//return $this->hasOne('App\Phone', 'foreign_key', 'local_key');
+      return $this->belongsTo('App\Models\Foodstaff');
+      // return $this->hasOne('App\Models\Foodstaff');
+
+      // return $this->hasOne('App\Phone', 'foreign_key', 'local_key');
     }
 }

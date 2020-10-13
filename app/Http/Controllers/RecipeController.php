@@ -18,6 +18,8 @@ use Image;
 use Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 // use Session;
 // use Auth;
@@ -70,9 +72,6 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
 
               // dd($request);
               $validatedData = $request->validate([
@@ -174,7 +173,7 @@ class RecipeController extends Controller
 
             //Checkbox store
             $feaures = New Feature;
-            $feaures->helthy = $request->boolean('helthy');
+            $feaures->healthy = $request->boolean('healthy');
             // If($request->input('helthy')){
             //   $feaures->helthy =1;
             // }
@@ -233,16 +232,16 @@ class RecipeController extends Controller
               $feaures->rotisserie =1;
             }
             If($request->input('christmas')){
-              $feaures->rotisserie =1;
+              $feaures->christmas =1;
             }
             If($request->input('easter')){
-              $feaures->rotisserie =1;
+              $feaures->easter =1;
             }
             If($request->input('valendines')){
-              $feaures->rotisserie =1;
+              $feaures->valendines =1;
             }
             If($request->input('fasting')){
-              $feaures->rotisserie =1;
+              $feaures->fasting =1;
             }
             $feaures->save();
 
@@ -433,7 +432,33 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-        //
+      $foodstaffs=Foodstaff::all();
+      $categories = Category::where('parent_id', '=', null)->get();
+      // dd($categories);
+      // dd($categories);
+      // $categories=Category::all();
+      $cuisines=Cuisine::all();
+      $tags=Tag::all();
+      // dd(Arr::wrap(str_replace('-',':',$recipe->portion)));
+
+      // dd(Str::before($recipe->portion, '-'));
+      // dd(Str::after($recipe->portion, '-'));
+      // dd(Arr::wrap(Str::before($recipe->portion, '-')));
+      // dd(Arr::prepend(Arr::wrap(Str::before($recipe->portion, '-')), Str::after($recipe->portion, '-')) );
+      $portion= Arr::prepend(Arr::wrap(Str::before($recipe->portion, '-')), Str::after($recipe->portion, '-'));
+      $portion_start= Str::before($recipe->portion, '-');
+      $portion_end= Str::after($recipe->portion, '-');
+      $ingredients = Ingredient::findorfail(1);
+      // dd($recipe->ingredients);
+      // dd($ingredients->foodstaff);
+      // Nested Eager Loading https://laravel.com/docs/8.x/eloquent-relationships#eager-loading
+      // $foods=Recipe::with('ingredients.foodstaff')->get();
+      // // dd($foods);
+      // In blade
+      // {{-- @foreach ($foods  as $food)
+      // {{$food->ingredients[1]->foodstaff->name}}
+      // @endforeach --}}
+      return view('recipe.edit', compact('recipe', 'foodstaffs', 'categories', 'cuisines', 'tags', 'portion_start', 'portion_end'));
     }
 
     /**

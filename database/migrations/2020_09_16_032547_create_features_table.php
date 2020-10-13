@@ -15,7 +15,7 @@ class CreateFeaturesTable extends Migration
     {
         Schema::create('features', function (Blueprint $table) {
             $table->id();
-            $table->boolean('helthy')->nullable();
+            $table->boolean('healthy')->nullable();
             $table->boolean('quick')->nullable();
             $table->boolean('easy')->nullable();
             $table->boolean('sugarfree')->nullable();
@@ -35,6 +35,7 @@ class CreateFeaturesTable extends Migration
             $table->boolean('easter')->nullable();
             $table->boolean('valendines')->nullable();
             $table->boolean('fasting')->nullable();//νηστείες
+            $table->foreignId('recipe_id')->nullable()->references('id')->on('recipes')->onDelete('cascade')->constrained();
             $table->timestamps();
         });
     }

@@ -106,7 +106,7 @@
       </div>
 
       <div class="col-md-6">
-        <h3 class="my-3">Περιγραφή Συνταγής </h3>
+        <h3 class="my-3">Περιγραφή Συνταγής <a href="{{route('recipes.edit', $recipe->slug)}}"><i class="ml-5 fas fa-edit"></i></a></h3>
           {!!$recipe->description!!}
 
           <div class="row">

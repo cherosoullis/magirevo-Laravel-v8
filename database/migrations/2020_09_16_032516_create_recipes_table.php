@@ -29,7 +29,7 @@ class CreateRecipesTable extends Migration
             // $table->foreignId('tag_id')->references('id')->on('tags')->onDelete('cascade')->constrained();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->constrained();
             $table->foreignId('cuisine_id')->nullable()->references('id')->on('cuisines')->onDelete('cascade')->constrained();
-            $table->foreignId('feature_id')->nullable()->references('id')->on('features')->onDelete('cascade')->constrained();
+            // $table->foreignId('feature_id')->nullable()->references('id')->on('features')->onDelete('cascade')->constrained();
             $table->text('notes')->nullable();
             $table->enum('availability', ['private', 'public']);
             $table->enum('status', ['published', 'unpublished'])->nullable();

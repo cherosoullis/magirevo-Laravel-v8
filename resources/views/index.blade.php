@@ -114,13 +114,13 @@
 
     <div class="row">
 
-        @foreach ($recipes as $key => $recipe)
+        @foreach ($recents as $key => $recipe)
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{{ asset('storage/recipes/'. $recipe->photo) }}" alt=""></a>
+            <a href="{{route('recipes.show',$recipe->slug)}}"><img class="card-img-top" src="{{ asset('storage/recipes/'. $recipe->photo) }}" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">{{$recipe->name}}</a>
+                <a href="{{route('recipes.show',$recipe->slug)}}">{{$recipe->name}}</a>
               </h4>
               <p class="card-text">{!!Str::limit($recipe->description, 150, ' (...)') !!}</p>
             </div>
@@ -188,12 +188,24 @@
     <!-- /.row -->
 
     <!-- Features Section -->
+    <h2>Δημοφιλή Συνταγές</h2>
     <div class="row">
-      <div class="col-lg-6">
-        <h2>H πιο δημοφιλή συνταγή</h2>
-        <h4>{{isset($popular->name)}}</h4>
-        <p>{!!isset($popular->description)!!}</p>
-        Δυσκολία:<strong>{{isset($popular->difficulty)}}</strong>
+      @foreach ($populars as $key => $recipe)
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+        <div class="card h-100">
+          <a href="{{route('recipes.show',$recipe->slug)}}"><img class="card-img-top" src="{{ asset('storage/recipes/'. $recipe->photo) }}" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="{{route('recipes.show',$recipe->slug)}}">{{$recipe->name}}</a>
+            </h4>
+            <p class="card-text">{!!Str::limit($recipe->description, 150, ' (...)') !!}</p>
+          </div>
+        </div>
+      </div>
+      {{-- @empty
+        <div></div> --}}
+      @endforeach
+
         {{-- Δυσκολία:<strong>{{$popular->difficulty}}</strong> --}}
       </div>
       <div class="col-lg-6">

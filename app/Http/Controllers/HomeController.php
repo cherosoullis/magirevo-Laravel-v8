@@ -22,13 +22,14 @@ class HomeController extends Controller
   public function home()
   {
     // $recipes = Recipe::findorfail(1);
-    $recipes = Recipe::orderBy('id', 'desc')->take(6)->get();
+    $recents = Recipe::orderBy('id', 'desc')->take(6)->get();
     // dd($recipes);
-    $popular = Recipe::latest();
-
-    $categories = Category::where('parent_id', null)->get();
+    // $populars = Recipe::latest()->first();
+    $populars = Recipe::orderBy('view_count', 'desc')->take(6)->get();
+    // dd($popular);
+    $categories = Category::where('parent_id', 'ASC')->get();
     // dd($categories);
-     return view('index', compact('categories', 'recipes', 'popular'));
+     return view('index', compact('categories', 'recents', 'populars'));
       // return view ('bootstrap.about');
   }
 

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CuisineController;
 use App\Http\Controllers\FoodstaffController;
 use App\Http\Controllers\ReviewController;
