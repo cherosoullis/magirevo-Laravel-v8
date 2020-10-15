@@ -15,8 +15,8 @@
   {{-- <div class="jumbotron" style="background-image: url('/storage/images/wood.jpg'); margin:20px;"> --}}
 <div style="padding:20px;">
   <div class="jumbotron">
-  <form class="recipe-form" method="POST" action="{{route('recipes.store')}}" enctype="multipart/form-data" >
-    @method ('post')
+  <form class="recipe-form" method="POST" action="{{route('recipes.update', $recipe->slug)}}" enctype="multipart/form-data" >
+    @method ('put')
     @csrf
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -46,10 +46,10 @@
     <div class="form-group col-md-4">
       {{-- <label for="exampleFormControlInput2">Εικόνα</label> --}}
       <label class="btn btn-primary">
-        <i class="fa fa-image"></i>Επέλεξε Φωτογραφία<input type="file" style="display: none;" id="recipe_photo" name="image" onchange="loadPreview(this);" >
+        <i class="fa fa-image"></i>Επέλεξε Φωτογραφία {{$recipe->photo}}<input type="file" style="display:none;" id="recipe_photo" name="image" onchange="loadPreview(this);" value="{{$recipe->photo}}"/>
       </label>
       {{-- <input name="image" id="image" class="input-text" type="file"> --}}
-       <img id="preview_img" src="{{ asset("storage/recipes/$recipe->photo") }}" class="img-fluid rounded border border-success" width="350" height="350"/>
+       <img id="preview_img" src="{{ asset("storage/recipes/$recipe->photo") }}" class="img-fluid rounded border border-success" width="350" height="350" />
        @error('image')
            <div class="alert alert-danger">{{ $message }}</div>
        @enderror
@@ -149,7 +149,7 @@
         </li>
         <li class="list-group-item">
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" name="wood_oven" class="custom-control-input" id="check15" {{ $recipe->feature->wood_ovenwood_oven == 1 ? 'checked' : '' }}>
+            <input type="checkbox" name="wood_oven" class="custom-control-input" id="check15" {{ $recipe->feature->wood_oven == 1 ? 'checked' : '' }}>
             <label class="custom-control-label" for="check15">Ξυλόφουρνο</label>
           </div>
         </li>
