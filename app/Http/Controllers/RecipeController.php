@@ -600,13 +600,17 @@ class RecipeController extends Controller
 
           // $recipe->feature_id = $feaures->id;
           // $recipe->update(['feature_id' => $feaures->id]);
-          dd('done features');
-          // Synch categories selected with just saved recipe
-          foreach ($request->input('categories') as $category){
-            // dd($request->input('categories'));
-            $recipe->categories()->sync($category);
-          }
 
+          // Synch categories selected with just saved recipe
+
+
+          $recipe->categories()->sync($request->input('categories'));
+
+          // foreach ($request->input('categories') as $category){
+          //   // dd($request->input('categories'));
+          //   $recipe->categories()->sync($category);
+          // }
+dd('done categories');
 
           // dd('stored cateogries');
           //EXECUTION PART
