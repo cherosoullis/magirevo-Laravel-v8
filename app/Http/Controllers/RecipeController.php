@@ -213,9 +213,11 @@ class RecipeController extends Controller
 
             // dd('stored cateogries');
             //EXECUTION PART
+              $orderExecution = 1;
               foreach ($request->execution as $key => $value) {
 
                 $execution = new Execution;
+                $execution->order = $order++;
                 $execution->title = $value['title'];
 
                 //$execution->body = $value['body']; STORE THE IMAGE I have to save is along with images
@@ -573,9 +575,11 @@ class RecipeController extends Controller
 
           // dd('stored cateogries');
           //EXECUTION PART
+          $orderExecution = 1;
           foreach ($request->execution as $key => $value) {
 
             $execution = new Execution;
+            $execution->order = $orderExecution++;
             $execution->title = $value['title'];
 
             //$execution->body = $value['body']; STORE THE IMAGE I have to save is along with images

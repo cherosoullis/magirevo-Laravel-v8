@@ -204,7 +204,7 @@
         </ul>
       @endforeach --}}
       {{-- OR use bootstrap table https://getbootstrap.com/docs/4.1/content/tables/ --}}
-          @foreach ($recipe->ingredients->sortBy('id') as $master)
+          @foreach ($recipe->ingredients->sortBy('order') as $master)
             <h3 class="my-3">{{{$master->heading ?? ''}}}</h3>
 
              {{-- @if ($loop->first) {{--Shows only once what is inside the loop --}}
@@ -226,7 +226,7 @@
               {{-- @endif --}}
 
             {{-- <h3 class="my-3">{{$master->heading}}</h3> --}}
-            @foreach ($master->childrens->sortBy('id') as $ingredient)
+            @foreach ($master->childrens->sortBy('order') as $ingredient)
               {{-- @if ($loop->first) --}}
               {{-- the one time code here --}}
               {{-- @endif --}}
@@ -258,7 +258,7 @@
 
         <div class="col-md-7">
           <h2 class="my-3">Εκτέλεση συνταγής </h2>
-          @foreach ($recipe->executions as $master)
+          @foreach ($recipe->executions->sortBy('order') as $master)
             <h3 class="my-3">{{$master->title}}</h3>
             <p> {!!$master->body!!}</p>
             {{-- <ul> --}}

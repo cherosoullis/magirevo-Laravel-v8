@@ -15,6 +15,7 @@ class CreateExecutionsTable extends Migration
     {
         Schema::create('executions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('order');
             $table->string('title')->nullable();
             $table->longText('body');
             $table->foreignId('recipe_id')->references('id')->on('recipes')->onDelete('cascade')->nullable();
