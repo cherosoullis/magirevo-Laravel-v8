@@ -174,75 +174,31 @@ class RecipeController extends Controller
             //Checkbox store
             $feaures = New Feature;
             $feaures->healthy = $request->boolean('healthy');
-            // If($request->input('helthy')){
-            //   $feaures->helthy =1;
-            // }
-            if ($request->has('quick')) {
-                $feaures->quick =1;
-              }
-            // If($request->input('quick')){
-            //   $feaures->quick =1;
-            // }
-            if ($request->filled('easy')) {
-              $feaures->easy =1;
-            }
-            // If($request->input('easy')){
-            //   $feaures->easy =1;
-            // }
-            If($request->input('sugarfree')){
-              $feaures->sugarfree =1;
-            }
-            If($request->input('glutenfree')){
-              $feaures->glutenfree =1;
-            }
-            If($request->input('diet')){
-              $feaures->diet =1;
-            }
-            If($request->input('spicy')){
-              $feaures->spicy =1;
-            }
-            If($request->input('vegan')){
-              $feaures->vegan =1;
-            }
-            If($request->input('protein')){
-              $feaures->protein =1;
-            }
-            If($request->input('vegan')){
-              $feaures->vegan =1;
-            }
-            If($request->input('pot')){
-              $feaures->pot =1;
-            }
-            If($request->input('hull')){
-              $feaures->hull =1;
-            }
-            If($request->input('oven')){
-              $feaures->oven =1;
-            }
-            If($request->input('pan')){
-              $feaures->pan =1;
-            }
-            If($request->input('charcoal')){
-              $feaures->charcoal =1;
-            }
-            If($request->input('wood_oven')){
-              $feaures->wood_oven =1;
-            }
-            If($request->input('rotisserie')){
-              $feaures->rotisserie =1;
-            }
-            If($request->input('christmas')){
-              $feaures->christmas =1;
-            }
-            If($request->input('easter')){
-              $feaures->easter =1;
-            }
-            If($request->input('valendines')){
-              $feaures->valendines =1;
-            }
-            If($request->input('fasting')){
-              $feaures->fasting =1;
-            }
+            $feaures->quick = $request->boolean('quick');
+            $feaures->easy = $request->boolean('easy');
+            $feaures->sugarfree = $request->boolean('sugarfree');
+            $feaures->glutenfree = $request->boolean('glutenfree');
+            $feaures->diet = $request->boolean('diet');
+            $feaures->spicy = $request->boolean('spicy');
+            $feaures->protein = $request->boolean('protein');
+            $feaures->vegan = $request->boolean('vegan');
+            $feaures->pot = $request->boolean('pot');
+            $feaures->hull = $request->boolean('hull');
+            $feaures->oven = $request->boolean('oven');
+            $feaures->pan = $request->boolean('pan');
+            $feaures->charcoal = $request->boolean('charcoal');
+            $feaures->wood_oven = $request->boolean('wood_oven');
+            $feaures->rotisserie = $request->boolean('rotisserie');
+            $feaures->christmas = $request->boolean('christmas');
+            $feaures->easter = $request->boolean('easter');
+            $feaures->valendines = $request->boolean('valendines');
+            $feaures->fasting = $request->boolean('fasting');
+            $feaures->christmas = $request->boolean('christmas');
+
+            // if ($request->has('quick')) {
+            //     $feaures->quick =1;
+            //   }
+
             $feaures->save();
 
             // $recipe->feature_id = $feaures->id;
@@ -448,7 +404,7 @@ class RecipeController extends Controller
       $portion= Arr::prepend(Arr::wrap(Str::before($recipe->portion, '-')), Str::after($recipe->portion, '-'));
       $portion_start= Str::before($recipe->portion, '-');
       $portion_end= Str::after($recipe->portion, '-');
-      $ingredients = Ingredient::findorfail(1);
+      // $ingredients = Ingredient::findorfail(2);
       // dd($recipe->ingredients);
       // dd($ingredients->foodstaff);
       // Nested Eager Loading https://laravel.com/docs/8.x/eloquent-relationships#eager-loading
@@ -583,6 +539,7 @@ class RecipeController extends Controller
           $feaures->glutenfree = $request->boolean('glutenfree');
           $feaures->diet = $request->boolean('diet');
           $feaures->vegan = $request->boolean('vegan');
+          $feaures->spicy = $request->boolean('spicy');
           $feaures->protein = $request->boolean('protein');
           $feaures->pot = $request->boolean('pot');
           $feaures->hull = $request->boolean('hull');
@@ -603,35 +560,40 @@ class RecipeController extends Controller
 
           // Synch categories selected with just saved recipe
 
-
+          //Insert into offence_photo table
+          //$offence->photos()->sync($photo_id_array, false);//dont delete old entries = false
           $recipe->categories()->sync($request->input('categories'));
 
-          // foreach ($request->input('categories') as $category){
-          //   // dd($request->input('categories'));
-          //   $recipe->categories()->sync($category);
-          // }
-dd('done categories');
+          //dekete executions and recreate
+          $executionDelete = Execution::where('recipe_id', $recipe->id)->get();
+          // dd($executionDelete);
+          foreach ($executionDelete as $key => $exec) {
+            $exec->delete();
+          }
 
           // dd('stored cateogries');
           //EXECUTION PART
-            foreach ($request->execution as $key => $value) {
+          foreach ($request->execution as $key => $value) {
 
-              $execution = new Execution;
-              $execution->title = $value['title'];
+            $execution = new Execution;
+            $execution->title = $value['title'];
 
-              //$execution->body = $value['body']; STORE THE IMAGE I have to save is along with images
-              $description = $value['body'];
+            //$execution->body = $value['body']; STORE THE IMAGE I have to save is along with images
+            $description = $value['body'];
 
-              $dom = new \DomDocument();
-              // $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-              $dom->loadHtml('<meta http-equiv="Content-Type" content="text/html; charset=utf-8">' .$description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $dom = new \DomDocument();
+            // $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            // dd($description);
+            $dom->loadHtml('<?xml encoding="utf-8" ?>' .$description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
-              // dd($dom);
-              $images = $dom->getElementsByTagName('img');
+            // dd($dom);
+            $images = $dom->getElementsByTagName('img');
 
-              foreach($images as $k => $img){
-                  $data = $img->getAttribute('src');
-
+            foreach($images as $k => $img){
+                $data = $img->getAttribute('src');
+                //If its existing image the src is starage .. so if is existing image ingore the
+                //store of image else make the folloging steps
+                if(Str::startsWith($data, 'data:image/png;base64')){
                   list($type, $data) = explode(';', $data);
                   list(, $data)      = explode(',', $data);
                   $data = base64_decode($data);
@@ -645,23 +607,32 @@ dd('done categories');
 
                   $img->removeAttribute('src');
                   $img->setAttribute('src', $image_name);
-                }
-                // dd($dom->saveXML());
-                // $description = $dom->saveHTML();
-                //It is stored as xml that is why I save as xml,
-                $description = $dom->saveXML();
-
-                $execution->body = $description;
-                //END SAVING IMAGE
-
-              $execution->recipe_id = $recipe->id;
-              $execution -> save();
+                };
+                // dd($data);
               }
+              // dd($dom->saveXML());
+              // $description = $dom->saveHTML();
+              //It is stored as xml that is why I save as xml,
+              $description = $dom->saveXML();
 
+              $execution->body = $description;
+              //END SAVING IMAGE
+
+            $execution->recipe_id = $recipe->id;
+            $execution -> save();
+            }
+
+              //dekete incredients and recreate
+              $ingredientDelete = Ingredient::where('recipe_id', $recipe->id)->get();
+              // dd($executionDelete);
+              foreach ($ingredientDelete as $key => $ingre) {
+                $ingre->delete();
+              }
               //Begin Ingredient storing
               $order = 1; //Use for storing the order of the incredient
               $heading = 0; //Use for storing the heading of the incredient
 
+              // dd($request->addIngredients);
               foreach ($request->addIngredients as $key => $value) {
 
                 $ingredients = new Ingredient;
@@ -693,7 +664,8 @@ dd('done categories');
                 if(!isset($value['incredient']) || $value['incredient'] == false){
                   $ingredients->foodstaff_id = Null;
                 }else{//check if value added exists in database and if not add it else use existing value
-                  if (Foodstaff::where('id', '=', $value['incredient'])->exists()) {
+                  // $ingredients->foodstaff_id = $value['incredient'];
+                  if (Foodstaff::where('id', '>', $value['incredient'])->exists()) {
                      $ingredients->foodstaff_id = $value['incredient'];
                   }else{
                     $foodstaff = new Foodstaff;
@@ -701,7 +673,6 @@ dd('done categories');
                     $foodstaff->save();
                     $ingredients->foodstaff_id = $foodstaff->id;
                   }
-
                 }
 
                 if(!isset($value['details']) || $value['details'] == false){
@@ -730,33 +701,10 @@ dd('done categories');
                       $recipe->tags()->sync($value);
                     }
                 }
-    // $owner->cars()->save($car);//cars is the relationship from the model
 
-          // $dealership->users()->save($user);
-
-        // $description = $request->input('description');
-        // $dom = new \DomDocument();
-        // $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-        // $images = $dom->getElementsByTagName('img');
-        //
-        // foreach($images as $k => $img){
-        //     $data = $img->getAttribute('src');
-        //
-        //     list($type, $data) = explode(';', $data);
-        //     list(, $data)      = explode(',', $data);
-        //     $data = base64_decode($data);
-        //     $image_name= time().$k.'.png';
-        //     $path = public_path() . $image_name;
-        //
-        //     file_put_contents($path, $data);
-        //
-        //     $img->removeAttribute('src');
-        //     $img->setAttribute('src', $image_name);
-        //   }
-        //   $description = $dom->saveHTML();
          $recipes = Recipe::all();
          // dd ($recipes);
-         return redirect()->route('recipes.index', ['recipes'])->with('message', 'Συνταγή αποθηκεύθηκε επιτυχώς');
+         return redirect()->route('recipes.index', ['recipes'])->with('message', 'Συνταγή ενημερώθηκε επιτυχώς');
           // dd($description);
 
     }

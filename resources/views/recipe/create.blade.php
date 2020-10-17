@@ -60,7 +60,7 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <div class="custom-control custom-checkbox">
-            <input type="checkbox" name="helthy" class="custom-control-input" id="check1" {{ old('helthy') == 'on' ? 'checked' : '' }}>
+            <input type="checkbox" name="healthy" class="custom-control-input" id="check1" {{ old('healthy') == 'on' ? 'checked' : '' }}>
             <label class="custom-control-label" for="check1">Υγιεινό</label>
           </div>
         </li>
@@ -374,16 +374,17 @@
                 <option value="κ.γ.">Κουταλάκι Γλυκού</option>
                 <option value="κ.σ.">Κουτάλι Σούπους</option>
                 <option value="φλ.">Φλυντζάνι</option>
-                <option value="σκ.">Σκελίδα</option>
+                <option value="φακελάκι">Φακελάκι</option>
+                <option value="σκελίδα">Σκελίδα</option>
                 <option value="κουτί">Κουτί</option>
                 <option value="κούπα">Κούπα</option>
                 <option value="τεμ.">Τεμάχιο</option>
                 <option value="δέσμη">Δέσμη</option>
                 <option value="πρέζα">Πρέζα</option>
-                <option value="γρ.">Γραμμάρια</option>
-                <option value="κιλά">Κιλά</option>
-                <option value="ml">Χιλιοστόλιτρα </option>
-                <option value="l">Λίτρα</option>
+                <option value="γρ.">Γραμμάριο</option>
+                <option value="κιλό">Κιλό</option>
+                <option value="ποτήρι">Ποτήρι</option>
+                <option value="λίτρο">Λίτρα</option>
               </select>
               </td>
               <td>

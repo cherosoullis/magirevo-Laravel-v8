@@ -328,7 +328,7 @@
           {{-- Check if there are old values If not then create the table normally else loop to create the table --}}
             @if(is_null((old('addIngredients'))))
             <tr>
-              @foreach ($recipe->ingredients as $key => $ingredient)
+              @foreach ($recipe->ingredients->sortBy('id') as $key => $ingredient)
                 @if ($ingredient->parent_id == '0')
                   <td colspan="4"><input type="text" name="addIngredients[{{$key}}][heading]"  class="form-control" value="{{$ingredient->heading}}"></td>
                   @once
@@ -357,14 +357,14 @@
                   </select>
                   </td>
                   <td>
-                  <select name="addIngredients[1][incredient]" data-placeholder="Επιλέξτε Συστατικό" style="width: 115%" class="form-control js-multiple-ingretients">
+                  <select name="addIngredients[{{$key}}][incredient]" data-placeholder="Επιλέξτε Συστατικό" style="width: 115%" class="form-control js-multiple-ingretients">
                     <option></option>
                     @foreach($foodstaffs as $foodstaff)
                       <option value="{{$foodstaff->id}}" {{($ingredient->foodstaff_id == $foodstaff->id)  ? "selected":""}} >{{$foodstaff->name}}</option>
                     @endforeach
                   </select>
                   </td>
-                  <td><input type="text" name="addIngredients[1][details]" placeholder="Σημειώσεις" class="form-control" /></td>
+                  <td><input type="text" name="addIngredients[{{$key}}][details]" placeholder="Σημειώσεις" class="form-control" /></td>
                   @once
                   <td><button type="button" name="add" id="add" class="btn btn-success">Καταχώρησε Υλικό</button></td>
                   @endonce
