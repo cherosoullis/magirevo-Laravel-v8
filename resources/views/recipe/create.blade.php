@@ -230,10 +230,10 @@
   <div class="form-group col-md-1">
     <select name="serving_size" data-placeholder="Επιλέξτε Μονάδα" style="width: 200%" class="form-control js-multiple-portion" value="{{old('serving_size')}}">
       <option></option>
-      <option value="1"{{ old('serving_size') == '1' ? 'selected' : '' }}>Μερίδες</option>
-      <option value="2"{{ old('serving_size') == '2' ? 'selected' : '' }}>Πιάτα</option>
-      <option value="3"{{ old('serving_size') == '3' ? 'selected' : '' }}>Ποτήρια</option>
-      <option value="4"{{ old('serving_size') == '4' ? 'selected' : '' }}>Κιλά</option>
+      <option value="Μερίδες"{{ old('serving_size') == '1' ? 'selected' : '' }}>Μερίδες</option>
+      <option value="Πιάτα"{{ old('serving_size') == '2' ? 'selected' : '' }}>Πιάτα</option>
+      <option value="Ποτήρια"{{ old('serving_size') == '3' ? 'selected' : '' }}>Ποτήρια</option>
+      <option value="Κιλά"{{ old('serving_size') == '4' ? 'selected' : '' }}>Κιλά</option>
     </select>
   </div>
 </div>

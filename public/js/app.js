@@ -1952,6 +1952,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['recipe', 'favorited'],
   data: function data() {
@@ -39716,7 +39717,12 @@ var render = function() {
               }
             }
           },
-          [_c("i", { staticClass: "fas fa-heart" })]
+          [
+            _c("i", {
+              staticClass: "fas fa-heart fa-2x",
+              staticStyle: { color: "Tomato" }
+            })
+          ]
         )
       : _c(
           "a",
@@ -39729,7 +39735,12 @@ var render = function() {
               }
             }
           },
-          [_c("i", { staticClass: "far fa-heart" })]
+          [
+            _c("i", {
+              staticClass: "far fa-heart fa-2x",
+              staticStyle: { color: "Tomato" }
+            })
+          ]
         )
   ])
 }

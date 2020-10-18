@@ -48,7 +48,7 @@
   <!-- Page Content -->
   <div class="container">
 
-    <h1 class="my-4">Κύριες Κατηγορίες</h1>
+    <h1 class="my-4 headings">Κύριες Κατηγορίες</h1>
 
     <!-- Marketing Icons Section -->
     <div class="row">
@@ -110,7 +110,7 @@
     <!-- /.row -->
 
     <!-- Portfolio Section -->
-    <h2>Πρόσφατες Συνταγές</h2>
+    <h2 class="headings">Πρόσφατες Συνταγές</h2>
 
     <div class="row">
 
@@ -188,7 +188,7 @@
     <!-- /.row -->
 
     <!-- Features Section -->
-    <h2>Δημοφιλή Συνταγές</h2>
+    <h2 class="headings">Δημοφιλή Συνταγές</h2>
     <div class="row">
       @foreach ($populars as $key => $recipe)
       <div class="col-lg-4 col-sm-6 portfolio-item">

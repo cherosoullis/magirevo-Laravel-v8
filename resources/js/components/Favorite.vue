@@ -1,10 +1,11 @@
 <template>
     <span>
         <a href="#" v-if="isFavorited" @click.prevent="unFavorite(recipe)">
-          <i class="fas fa-heart"></i>
+
+          <i class="fas fa-heart fa-2x" style="color: Tomato;"></i>
         </a>
         <a href="#" v-else @click.prevent="favorite(recipe)">
-          <i class="far fa-heart"></i>
+          <i class="far fa-heart fa-2x" style="color: Tomato;"></i>
         </a>
     </span>
 </template>

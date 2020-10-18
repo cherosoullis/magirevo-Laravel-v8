@@ -106,39 +106,42 @@
       </div>
 
       <div class="col-md-6">
-        <h3 class="my-3">Περιγραφή Συνταγής <a href="{{route('recipes.edit', $recipe->slug)}}"><i class="ml-5 fas fa-edit"></i></a></h3>
+
+        <h3 class="d-inline-flex headings" >Περιγραφή Συνταγής  </h3>
+        @if (Auth::check())
+          <div class="d-inline-flex ml-3">
+              <favorite
+                  :recipe={{ $recipe->id }}
+                  :favorited={{ $recipe->favorited() ? 'true' : 'false' }}
+              ></favorite>
+          </div>
+      @endif
+      <div class="d-inline-flex  ml-5">
+        <a href="{{route('recipes.edit', $recipe->slug)}}">  <span style="color: Mediumslateblue;"><i class="ml-5 fas fa-edit fa-2x"></i></span></a>
+      </div>
           {!!$recipe->description!!}
 
-          <div class="row">
-            <h5 class="my-3">ΕΠΙΠΕΔΟ ΔΥΣΚΟΛΙΑΣ: {{$recipe->difficulty}}</h5>
-            <div class="col-sm m-1 shring">
-              <span class="hvr-grow" style="font-size: 25px; color: Dodgerblue;">
-                <i class="fas fa-utensils"></i>
-              </span>
-            </div>
-            <div class="col-sm  m-1 shring">
-              <span class="hvr-grow" style="font-size: 25px; color: Dodgerblue;">
-                <i class="fas fa-utensils"></i>
-              </span>
-            </div>
-            <div class="col-sm  m-1 shring">
-              <span class="hvr-grow" style="font-size: 25px; color: Dodgerblue;">
-                <i class="fas fa-utensils"></i>
-              </span>
-            </div>
-            <div class="col-sm  m-1 shring">
-              <span class="hvr-grow" style="font-size: 25px; color: Dodgerblue;">
-                <i class="fas fa-utensils"></i>
-              </span>
-            </div>
-            <div class="col-sm  m-1 shring">
-              <span class="hvr-grow" style="font-size: 25px; color: red;">
-                <i class="fas fa-utensils"></i>
-              </span>
+          <div class="d-flex"><p class="headings">Επίπεδο Δυσκολίας:   </p>
+
+            <div class="difficulty ml-2" style="font-family: 'Arial Black'; margin-top: -30px;">
+              <span class="vary-easy {{$recipe->difficulty == 'Πολύ Εύκολο' ? 'red' : ''}}" style="font-size: 20px;font-weight: 1000;" >I</span>
+              <span class="easy {{$recipe->difficulty == 'Εύκολο' ? 'red' : ''}}" style="font-size: 25px;font-weight: 1000;" >I</span>
+              <span class="medium {{$recipe->difficulty == 'Μέτριο' ? 'red' : ''}}" style="font-size: 30px;font-weight: 1000;" >I</span>
+              <span class="hard {{$recipe->difficulty == 'Δύσκολο' ? 'red' : ''}}" style="font-size: 35px;font-weight: 1000;">I</span>
+              <span class="very-hard {{$recipe->difficulty == 'Πολύ Δύσκολο' ? 'red' : ''}}" style="font-size: 40px;font-weight: 1000;">I</span>
             </div>
           </div>
 
-          <div class="container">
+            <div class="d-flex"><p class="headings mr-2">Κουζίνα:</p>{{$recipe->cuisine['name']??''}}</div>
+
+            <div class="d-flex"><p class="d-inline headings mr-2">Κατηγορία:</p>@foreach ($recipe->categories as $category) {{$category->name}} @endforeach</div>
+
+            <div class="d-inline-flex mr-3"><p class=" headings mr-2">Προετοιμασία:</p>{{Str::limit($recipe->prep_time,5,' ')}}<i class="ml-2 fas fa-stopwatch fa-lg" style="color: Dodgerblue;"></i></div>
+            <div class="d-inline-flex"><p class="headings mr-2">Μαγείρεμα:</p>{{Str::limit($recipe->cook_time,5,' ')}}<i class="ml-2 fas fa-stopwatch fa-lg" style="color: Dodgerblue;"></i></div>
+
+            <div class="d-flex"><p class="headings mr-2">Μερίδες:</p>{{$recipe->portion}} {{$recipe->serving_size}}</div>
+
+
             <div class="row">
               <div class="col-sm-1">
                 <span class="hvr-grow" style="font-size: 12px; color: Dodgerblue;">
@@ -170,24 +173,9 @@
                     <i class="fas fa-print fa-3x"></i>
                   </span>
               </div>
-              {{-- <div class="col-sm-1">
-                <span class="hvr-grow" style="font-size: 12px; color: Dodgerblue;">
-                    <i class="far fa-heart fa-3x"></i>
-                  </span>
-              </div> --}}
-              {{-- Add to favorite button if user is logged in --}}
-              @if (Auth::check())
-                <div class="panel-footer">
-                    <favorite
-                        :recipe={{ $recipe->id }}
-                        :favorited={{ $recipe->favorited() ? 'true' : 'false' }}
-                    ></favorite>
-                </div>
-            @endif
             </div>
           </div>
 
-      </div>
   </div>
   <div class="row">
     <div class="col-md-5">
@@ -257,7 +245,7 @@
         </div>
 
         <div class="col-md-7">
-          <h2 class="my-3">Εκτέλεση συνταγής </h2>
+          <h2 class="my-3" style="color: #0B5004; font-weight: 1000;">ΕΚΤΕΛΕΣΗ</h2>
           @foreach ($recipe->executions->sortBy('order') as $master)
             <h3 class="my-3">{{$master->title}}</h3>
             <p> {!!$master->body!!}</p>
@@ -275,7 +263,7 @@
 
 </div>
     <!-- /.row -->
-
+<h6 class="d-inline-flex">Source:</h6> <a href="{{$recipe->source_url}}" target="_blank">{{$recipe->source}}<a>
     <!-- Related Projects Row -->
     <h3 class="my-4">Σχετικές Συνταγές</h3>
 

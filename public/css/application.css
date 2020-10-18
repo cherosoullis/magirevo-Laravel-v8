@@ -17402,6 +17402,15 @@ body {
   flex-grow: unset;
 }
 
+.red {
+  color: red;
+}
+
+.headings {
+  color: #0B5004;
+  font-weight: 1000;
+}
+
 .container {
   margin-top: 10px;
 }
