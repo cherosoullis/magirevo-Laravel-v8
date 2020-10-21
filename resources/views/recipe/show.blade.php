@@ -174,9 +174,16 @@
                   </span>
               </div>
             </div>
+            {{-- <star-rating v-model="rating"></star-rating> --}}
+            {{-- <star-rating :recipe="{{$recipe->id}}"
+            :rated={{ $recipe->rated() ? 'true' : 'false' }}></star-rating> --}}
+            <rating  :recipe={{ $recipe->id }}></rating>
+            {{-- <rating :recipe={{ $recipe->id }}></rating> --}}
+
           </div>
 
   </div>
+
   <div class="row">
     <div class="col-md-5">
       {{-- @foreach ($recipe->ingredients as $master)

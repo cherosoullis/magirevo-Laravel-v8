@@ -80,6 +80,12 @@ class Recipe extends Model
                              ->first();
       }
 
+      public function rated()
+      {
+         return (bool) Rate::where('user_id', Auth::id())
+                             ->where('recipe_id', $this->id)
+                             ->first();
+      }
     public function reviews()
     {
       return $this->hasMany('App\Models\Review');

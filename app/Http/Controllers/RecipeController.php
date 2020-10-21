@@ -763,14 +763,17 @@ class RecipeController extends Controller
      public function favoriteRecipe($id)
       // public function favoriteRecipe(Recipe $recipe)
       {
-
           // Auth::user()->favorites()->attach($recipe);
           Auth::user()->favorites()->attach($id);
-
           // dd(Auth::user());
-
           return back();
       }
+
+      public function rateRecipe($id)
+       {
+           Auth::user()->rates()->attach($id);
+           return back();
+       }
 
         /**
          * Unfavorite a particular post

@@ -7,11 +7,20 @@ window.Vue = require('vue');
 //Add select2
 import 'select2/dist/js/select2.min.js';
 
+//Star rating
+import StarRating from 'vue-star-rating';
+window.StarRating = StarRating;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 Vue.component('favorite', require('./components/Favorite.vue').default);
 
+Vue.component('rating', require('./components/Rate.vue').default);
+
+Vue.component('star-rating', StarRating);
+//
+
 const app = new Vue({
     el: '#app',
+
 });
