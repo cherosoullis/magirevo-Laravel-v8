@@ -17,7 +17,8 @@ class CreateRatesTable extends Migration
             $table->id();
             $table->integer('recipe_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->integer('comment')->unsigned();
+            $table->double('rate', 8, 2)->unsigned();
+            $table->text('comment')->nullable();
             $table->enum('status', ['approved', 'not_approved'])->nullable();
             $table->timestamps();
         });

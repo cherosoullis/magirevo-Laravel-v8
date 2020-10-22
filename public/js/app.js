@@ -2009,13 +2009,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['recipe', 'recipeID', 'rated', 'currentRating', 'currentSelectedRating', 'boundRating'],
   mounted: function mounted() {
     // this.isFavorited = this.isFavorite ? true : false;
     console.log('Component mounted.');
-    console.log('This is mounted recipe ID ' + this.recipe);
-    console.log('This is mounted attrs recipe ID' + this.$attrs.recipe);
+    console.log('This is mounted recipe ID ' + this.recipe); //this is with recipe in props
+
+    console.log('This is mounted attrs recipe ID' + this.$attrs.recipe); //this is without recipe in props
   },
   methods: {
     rate: function rate() {
@@ -2027,10 +2029,19 @@ __webpack_require__.r(__webpack_exports__);
       console.log('This is the recipe ID' + recipeID);
     },
     setRating: function setRating(rating) {
-      this.rating = rating; // recipeID = this.recipe;
+      this.rating = rating;
+      axios.post('/rate/' + this.recipe + '/' + this.rating) // axios.post('/rate/'+this.recipe)
+      .then(function (response) {
+        return console.log(response.data);
+      }) // .then(response => this.isFavorited = true)
+      ["catch"](function (response) {
+        return console.log(response.data);
+      }); // this.recipe
+      // recipeID = this.recipe;
       // this.rating = "You have Selected: " + rating + " stars";
 
-      console.log('This is the setRating ' + this.rating); // console.log('This is the setRating recipe ' + this.recipe);
+      console.log('This is the setRating ' + this.rating);
+      console.log('This is the setRating for recipe ' + this.recipe); // console.log('This is the setRating recipe ' + this.recipe);
     } // unFavorite(recipe) {
     //     axios.post('/unfavorite/'+recipe)
     //         .then(response => this.isFavorited = false)
@@ -39907,16 +39918,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("star-rating", {
-    attrs: { "active-color": "#9c0000" },
-    on: {
-      "rating-selected": _vm.setRating,
-      click: function($event) {
-        $event.preventDefault()
-        return _vm.rate(_vm.recipe)
-      }
-    }
-  })
+  return _c(
+    "div",
+    [
+      _c("star-rating", {
+        attrs: { increment: 0.5, "active-color": "#9c0000" },
+        on: { "rating-selected": _vm.setRating }
+      }),
+      _vm._v(" "),
+      _c("textarea")
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

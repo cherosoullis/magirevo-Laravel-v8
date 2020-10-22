@@ -1,7 +1,8 @@
 <template>
-
-  <star-rating @rating-selected ="setRating" active-color="#9c0000" @click.prevent="rate(recipe)"></star-rating>
-
+<div>
+  <star-rating :increment="0.5" @rating-selected ="setRating" active-color="#9c0000" ></star-rating>
+  <textarea></textarea>
+</div>
 </template>
 
 <script>
@@ -10,8 +11,8 @@ export default {
   mounted() {
       // this.isFavorited = this.isFavorite ? true : false;
       console.log('Component mounted.')
-      console.log('This is mounted recipe ID ' + this.recipe)
-      console.log('This is mounted attrs recipe ID' + this.$attrs.recipe)
+      console.log('This is mounted recipe ID ' + this.recipe) //this is with recipe in props
+      console.log('This is mounted attrs recipe ID' + this.$attrs.recipe) //this is without recipe in props
   },
 
   methods: {
@@ -23,10 +24,18 @@ export default {
               console.log('This is the recipe ID' + recipeID)
       },
       setRating: function(rating) {
-        this.rating= rating;
+        this.rating= rating
+        axios.post('/rate/'+this.recipe+'/'+this.rating)
+        // axios.post('/rate/'+this.recipe)
+
+            .then(response => console.log(response.data))
+            // .then(response => this.isFavorited = true)
+            .catch(response => console.log(response.data));
+        // this.recipe
         // recipeID = this.recipe;
         // this.rating = "You have Selected: " + rating + " stars";
-        console.log('This is the setRating ' + this.rating);
+        console.log('This is the setRating ' + this.rating)
+        console.log('This is the setRating for recipe ' + this.recipe)
         // console.log('This is the setRating recipe ' + this.recipe);
       }
 
