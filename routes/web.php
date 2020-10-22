@@ -41,7 +41,7 @@ Route::group(['middleware' => ['auth']], function() {
   // Route::post('unfavorite/{recipe}', 'RecipeController@unFavoriteRecipe');
   // Route::get('favorite-recipes', 'HomeController@myFavorites');
   Route::post('favorite/{recipe}', [RecipeController::class, 'favoriteRecipe']);
-  Route::post('rate/{recipe}/{rate}', [RecipeController::class, 'rateRecipe']);
+  Route::post('rate/{recipe}/{rate}/{comment}', [RecipeController::class, 'rateRecipe']);
   Route::post('unfavorite/{recipe}', [RecipeController::class, 'unFavoriteRecipe']);
   Route::get('favorite-recipes', [HomeController::class, 'myFavorites']);
 

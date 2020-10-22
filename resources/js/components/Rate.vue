@@ -1,7 +1,8 @@
 <template>
 <div>
   <star-rating :increment="0.5" @rating-selected ="setRating" active-color="#9c0000" ></star-rating>
-  <textarea></textarea>
+  <!-- <textarea></textarea> -->
+  <!-- <a class="nav-link"  value="C3000" @click="test()" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Search</a> -->
 </div>
 </template>
 
@@ -16,34 +17,75 @@ export default {
   },
 
   methods: {
-      rate() {
-        recipeID = this.recipe
-          axios.post('/rateRecipe/'+recipeID)
-              // .then(response => this.isFavorited = true)
-              .catch(response => console.log(response.data));
-              console.log('This is the recipe ID' + recipeID)
-      },
+   //  test(){
+   //    Swal.fire('Test!', 'Hello test message','success');
+   // },
+      // rate() {
+      //   recipeID = this.recipe
+      //     axios.post('/rateRecipe/'+recipeID)
+      //         // .then(response => this.isFavorited = true)
+      //         .catch(response => console.log(response.data));
+      //         console.log('This is the recipe ID' + recipeID)
+      // },
       setRating: function(rating) {
-        this.rating= rating
-        axios.post('/rate/'+this.recipe+'/'+this.rating)
-        // axios.post('/rate/'+this.recipe)
-
-            .then(response => console.log(response.data))
-            // .then(response => this.isFavorited = true)
-            .catch(response => console.log(response.data));
-        // this.recipe
-        // recipeID = this.recipe;
-        // this.rating = "You have Selected: " + rating + " stars";
-        console.log('This is the setRating ' + this.rating)
-        console.log('This is the setRating for recipe ' + this.recipe)
-        // console.log('This is the setRating recipe ' + this.recipe);
-      }
+        // Swal.fire('Any fool can use a computer')
+        // Swal.fire('Test!', 'Hello test message','success');
+        Swal.fire({
+          title: 'Σχολιάστε τη βαθμολογία σας',
+          input: 'textarea',
+          inputAttributes: {
+            autocapitalize: 'off'
+          },
+          showCancelButton: true,
+          confirmButtonText: 'Επιβεβαίωση',
+          showLoaderOnConfirm: true,
+          preConfirm: (comment) => {
+            this.rating= rating
+            // return
+            //fetch(`//api.github.com/users/${comment}`)
+            axios.post('/rate/'+this.recipe+'/'+ this.rating+'/'+ comment)
+              // .then(response => {
+              //   if (!response.ok) {
+              //     throw new Error(response.statusText)
+              //   }
+              //   return response.json()
+              // })
+              // .catch(error => {
+              //   Swal.showValidationMessage(
+              //     `Δεν ήταν επιτυχής: ${error}`
+              //   )
+              // })
+          },
+          allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire('Ευχαριστούμε για την ψήφο σας')
+            // Swal.fire({
+            //   title: `${result.value.login}'s avatar`,
+            //   imageUrl: result.value.avatar_url
+            // })
+          }
+        })
+      //
+      //   this.rating= rating
+      //   axios.post('/rate/'+this.recipe+'/'+this.rating)
+      //   // axios.post('/rate/'+this.recipe)
+      //       .then(response => console.log(response.data))
+      //       // .then(response => this.isFavorited = true)
+      //       .catch(response => console.log(response.data));
+      //   // this.recipe
+      //   // recipeID = this.recipe;
+      //   // this.rating = "You have Selected: " + rating + " stars";
+      //   console.log('This is the setRating ' + this.rating)
+      //   console.log('This is the setRating for recipe ' + this.recipe)
+      //   // console.log('This is the setRating recipe ' + this.recipe);
+      // }
 
       // unFavorite(recipe) {
       //     axios.post('/unfavorite/'+recipe)
       //         .then(response => this.isFavorited = false)
       //         .catch(response => console.log(response.data));
-      // }
+      }
   }
 }
 

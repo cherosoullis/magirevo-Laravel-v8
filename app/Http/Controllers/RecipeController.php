@@ -769,12 +769,12 @@ class RecipeController extends Controller
           return back();
       }
 
-      public function rateRecipe($id, $rate)
+      public function rateRecipe($id, $rate, $comment)
        {
 
          // dd($id);
          //https://laravel.com/docs/8.x/eloquent-relationships#updating-many-to-many-relationships
-           Auth::user()->rates()->attach($id, ['comment' => $rate]);
+           Auth::user()->rates()->attach($id, ['rate' => $rate, 'comment' => $comment, 'not_approved' => 'not_approved']);
            // Auth::user()->rates()->attach($id);
            return back();
        }
