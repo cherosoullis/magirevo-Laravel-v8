@@ -22,10 +22,10 @@ class HomeController extends Controller
   public function home()
   {
     // $recipes = Recipe::findorfail(1);
-    $recents = Recipe::orderBy('id', 'desc')->take(6)->get();
+    $recents = Recipe::where('status','=','published')->orderBy('id', 'desc')->take(6)->get();
     // dd($recipes);
     // $populars = Recipe::latest()->first();
-    $populars = Recipe::orderBy('view_count', 'desc')->take(6)->get();
+    $populars = Recipe::where('status','=','published')->orderBy('view_count', 'desc')->take(6)->get();
     // dd($popular);
     $categories = Category::where('parent_id', 'ASC')->get();
     // dd($categories);

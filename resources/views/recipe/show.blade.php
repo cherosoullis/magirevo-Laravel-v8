@@ -123,23 +123,31 @@
 
           <div class="d-flex"><p class="headings">Επίπεδο Δυσκολίας:   </p>
 
-            <div class="difficulty ml-2" style="font-family: 'Arial Black'; margin-top: -30px;">
+            <div class="difficulty ml-2" style="font-family: 'Arial Black'; color: rgb(197,236,231); margin-top: -6px;">
+              <span class="vary-easy {{$recipe->difficulty == 'Πολύ Εύκολο' ? 'red' : ''}}" style="font-size: 25px;font-weight: 1000;" ><i style="background: rgb(250,5,5);" class="fas fa-drumstick-bite"></i></span>
+              <span class="easy {{$recipe->difficulty == 'Εύκολο' ? 'red' : ''}}" style="font-size: 25px;font-weight: 1000;" ><i style="background: rgb(200,5,5);" class="fas fa-drumstick-bite"></i></span>
+              <span class="medium {{$recipe->difficulty == 'Μέτριο' ? 'red' : ''}}" style="font-size: 25px;font-weight: 1000;" ><i style="background: rgb(150,5,5);" class="fas fa-drumstick-bite"></i></span>
+              <span class="hard {{$recipe->difficulty == 'Δύσκολο' ? 'red' : ''}}" style="font-size: 25px;font-weight: 1000;"><i style="background: rgb(100,5,5);"class="fas fa-drumstick-bite"></i></span>
+              <span class="very-hard {{$recipe->difficulty == 'Πολύ Δύσκολο' ? 'red' : ''}}" style="font-size: 25px;font-weight: 1000;"><i style="background: rgb(60,5,5);" class="fas fa-drumstick-bite"></i></span>
+            </div>
+          </div>
+            {{-- <div class="difficulty ml-2" style="font-family: 'Arial Black'; margin-top: -30px;">
               <span class="vary-easy {{$recipe->difficulty == 'Πολύ Εύκολο' ? 'red' : ''}}" style="font-size: 20px;font-weight: 1000;" >I</span>
               <span class="easy {{$recipe->difficulty == 'Εύκολο' ? 'red' : ''}}" style="font-size: 25px;font-weight: 1000;" >I</span>
               <span class="medium {{$recipe->difficulty == 'Μέτριο' ? 'red' : ''}}" style="font-size: 30px;font-weight: 1000;" >I</span>
               <span class="hard {{$recipe->difficulty == 'Δύσκολο' ? 'red' : ''}}" style="font-size: 35px;font-weight: 1000;">I</span>
               <span class="very-hard {{$recipe->difficulty == 'Πολύ Δύσκολο' ? 'red' : ''}}" style="font-size: 40px;font-weight: 1000;">I</span>
             </div>
-          </div>
+          </div> --}}
 
-            <div class="d-flex"><p class="headings mr-2">Κουζίνα:</p>{{$recipe->cuisine['name']??''}}</div>
+            <div class="d-flex"><p class="headings mr-2">Κουζίνα:</p>{{$recipe->cuisine['name']??'Ν/Α'}}</div>
 
             <div class="d-flex"><p class="d-inline headings mr-2">Κατηγορία:</p>@foreach ($recipe->categories as $category) {{$category->name}} @endforeach</div>
 
-            <div class="d-inline-flex mr-3"><p class=" headings mr-2">Προετοιμασία:</p>{{Str::limit($recipe->prep_time,5,' ')}}<i class="ml-2 fas fa-stopwatch fa-lg" style="color: Dodgerblue;"></i></div>
-            <div class="d-inline-flex"><p class="headings mr-2">Μαγείρεμα:</p>{{Str::limit($recipe->cook_time,5,' ')}}<i class="ml-2 fas fa-stopwatch fa-lg" style="color: Dodgerblue;"></i></div>
+            <div class="d-inline-flex mr-3"><p class=" headings mr-2">Προετοιμασία:</p>{{Str::limit($recipe->prep_time,5,' ')?? 'Ν/Α'}}<i class="ml-2 fas fa-stopwatch fa-lg" style="color: Dodgerblue;"></i></div>
+            <div class="d-inline-flex"><p class="headings mr-2">Μαγείρεμα:</p>{{Str::limit($recipe->cook_time,5,' ')?? 'Ν/Α'}}<i class="ml-2 fas fa-stopwatch fa-lg" style="color: Dodgerblue;"></i></div>
 
-            <div class="d-flex"><p class="headings mr-2">Μερίδες:</p>{{$recipe->portion}} {{$recipe->serving_size}}</div>
+            <div class="d-flex"><p class="headings mr-2">Μερίδες:</p>{{$recipe->portion??''}} {{$recipe->serving_size??''}}</div>
 
 
             <div class="row">

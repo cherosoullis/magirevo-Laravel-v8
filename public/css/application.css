@@ -17384,6 +17384,16 @@ readers do not read off random characters that represent icons */
   background: #BABABA;
 }
 
+.fa-drumstick-bite {
+  display: inline-block;
+  border-radius: 50%;
+  padding: 0.3em;
+  /* adjust padding */
+  height: 2em;
+  width: 2em;
+  text-align: center;
+}
+
 .pic-shadow {
   box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 0px 0px 20px 14px rgba(0, 0, 0, 0.37);
 }

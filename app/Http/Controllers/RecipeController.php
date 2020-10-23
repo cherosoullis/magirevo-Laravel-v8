@@ -43,7 +43,9 @@ class RecipeController extends Controller
      */
     public function index()
     {
-      $recipes = Recipe::all();
+      // dd(session()->all());
+      $recipes = Recipe::where('status','=','published')->get();
+      // dd($recipes);
         return view('recipe.index', compact('recipes'));
     }
 
@@ -371,11 +373,20 @@ class RecipeController extends Controller
     {
 
       $Key = 'recipe' . $recipe->id;
+      //SOS field must has a default value of 0 in order to work and not nul
         if (!Session::has($Key)) {
-            // dd('has kes');
-        DB::table('recipes')->where('id', $recipe->id)->increment('view_count', 1);
+        // $query = DB::table('recipes')->where('id','=', $recipe->id)->increment('view_count',2);
+        // dd('key not in session');
+        $query = DB::table('recipes')->where('id','=', $recipe->id)->increment('view_count',1);
+        // dd($query);
+        // $query->increment('view_count',1);
          Session::put($Key, 1);
+         // dd(DB::table('recipes')->where('id','=', $recipe->id)->increment('view_count', 1));
+         // dd(session()->all());
+
        }
+      // session()->flush();
+       // dd(session()->all());
       $recipe= Recipe::where('slug', $recipe->slug)->first();
 
       // $randomrecipes = Recipe::approved()->published()->take(3)->inRandomOrder()->get();
@@ -774,7 +785,7 @@ class RecipeController extends Controller
 
          // dd($id);
          //https://laravel.com/docs/8.x/eloquent-relationships#updating-many-to-many-relationships
-           Auth::user()->rates()->attach($id, ['rate' => $rate, 'comment' => $comment, 'not_approved' => 'not_approved']);
+           Auth::user()->rates()->attach($id, ['rate' => $rate, 'comment' => $comment, 'status' => 'not_approved']);
            // Auth::user()->rates()->attach($id);
            return back();
        }

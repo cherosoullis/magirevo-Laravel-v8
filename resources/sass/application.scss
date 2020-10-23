@@ -18,6 +18,19 @@
 #ex1Slider .slider-selection {
 	background: #BABABA;
 }
+
+//CSS for show for difficutlty
+.fa-drumstick-bite {
+  display: inline-block;
+  // color: rgb(198,136,136);
+  border-radius: 50%;
+  padding: 0.3em; /* adjust padding */
+  //line-height: initial !important; /* reset line-height */
+  height: 2em;
+  width: 2em;
+  text-align:center;
+}
+
 //CSS for picture in recipe show
 .pic-shadow {
 	-webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 0px 0px 20px 14px rgba(0,0,0,0.37);
