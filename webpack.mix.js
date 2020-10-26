@@ -34,6 +34,14 @@ mix.sass('resources/sass/application.scss', 'public/css');
       //Select2 Bootstrap theme
       // @import '~@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css';
       mix.styles([
+        'resources/css/foodstaff.css',
+        'resources/css/home.css',
+        'resources/css/recipe.css',
+        'resources/css/cookies.css',
+        'resources/css/scroll.css',
+      ], 'public/css/all.css');
+
+      mix.styles([
         'node_modules/select2/dist/css/select2.min.css',
         'node_modules/@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css',
       ],  'public/css/select.css');

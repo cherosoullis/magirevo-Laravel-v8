@@ -31,6 +31,7 @@
     <link href="{{ asset('css/application.css') }}" rel="stylesheet">
     {{-- For Select2 --}}
     <link href="{{ asset('css/select.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/all.css') }}" rel="stylesheet">
     @stack('styles')
 </head>
 <body>

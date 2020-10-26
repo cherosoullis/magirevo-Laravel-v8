@@ -1,0 +1,107 @@
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/templates/modern-business)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ Added manually the css*/
+
+body {
+  /* // padding-top: 56px; */
+  padding-top: 33px;
+
+}
+
+.carousel-item {
+  height: 90vh;
+  /* // height: 65vh; */
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* //CSS for inxex backround and card border */
+body {
+  background: #e5e696;
+background: -moz-linear-gradient(top,  #e5e696 24%, #d6db81 41%, #d1d360 72%);
+background: -webkit-linear-gradient(top,  #e5e696 24%,#d6db81 41%,#d1d360 72%);
+background: linear-gradient(to bottom,  #e5e696 24%,#d6db81 41%,#d1d360 72%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e696', endColorstr='#d1d360',GradientType=0 );
+
+
+}
+.card {
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+ box-shadow: 5px 5px 15px 5px #000000;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+/* //////////////HEADER AND FOOTER/////////////////
+// .menu { //Gradient generator for navbar
+// 	background: #bfd255;
+// 	background: -moz-linear-gradient(top,  #bfd255 0%, #8eb92a 50%, #72aa00 51%, #9ecb2d 100%);
+// 	background: -webkit-linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%);
+// 	background: linear-gradient(to bottom,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%);
+// 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 );
+// 	height: 60px;
+// } */
+.menu {
+background: #bfd255;
+background: -moz-linear-gradient(top,  #bfd255 0%, #8eb92a 50%, #72aa00 51%, #9ecb2d 100%);
+background: -webkit-linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%);
+background: linear-gradient(to bottom,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 );
+height: 60px;
+/* // padding: 3px; */
+}
+/* // .drop-menu {
+// font-family: Impact, Charcoal, sans-serif;
+// font-size: 24px;
+// letter-spacing: 0.4px;
+// word-spacing: 0.8px;
+// color: #0C3F07;
+// font-weight: 700;
+// text-decoration: none;
+// font-style: normal;
+// font-variant: normal;
+// text-transform: none;
+// } */
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+    color: #0C3F07;
+}
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+    color: #0C3F07;
+}
+
+.submenu {
+background: #bfd255;
+background: -moz-linear-gradient(top,  #bfd255 0%, #8eb92a 50%, #72aa00 51%, #9ecb2d 100%);
+background: -webkit-linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%);
+background: linear-gradient(to bottom,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 );
+
+}
+/* //main menu navigation links */
+.navigation-item{
+    font-family: Impact, Charcoal, sans-serif;
+font-size: 20px;
+letter-spacing: 0.4px;
+word-spacing: 0.8px;
+color: #0C3F07;
+font-weight: 200;
+text-decoration: none;
+font-style: normal;
+font-variant: normal;
+text-transform: none;
+}
+
+footer {
+    background: #bfd255;
+background: -moz-linear-gradient(top,  #bfd255 0%, #8eb92a 50%, #72aa00 51%, #9ecb2d 100%);
+background: -webkit-linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%);
+background: linear-gradient(to bottom,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 );
+}
