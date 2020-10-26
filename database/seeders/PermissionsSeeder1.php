@@ -18,6 +18,7 @@ class PermissionsSeeder extends Seeder
       app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
       // create permissions
+      Permission::create(['name' => 'create recipes']);
       Permission::create(['name' => 'edit recipes']);
       Permission::create(['name' => 'delete recipes']);
       Permission::create(['name' => 'publish recipes']);
@@ -25,6 +26,7 @@ class PermissionsSeeder extends Seeder
 
       // create roles and assign existing permissions
       $cook = Role::create(['name' => 'cook']);
+      $cook->givePermissionTo('create recipes');
       $cook->givePermissionTo('edit recipes');
       $cook->givePermissionTo('delete recipes');
 

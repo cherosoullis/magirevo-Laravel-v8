@@ -57,10 +57,11 @@ Route::group(['middleware' => ['auth']], function() {
   // Route::get('slugList','RecipeController@slugList');//get slug to check if similar exists
   Route::get('ingretientsList', [RecipeController::class, 'ingretientsList']);
   Route::get('slugList', [RecipeController::class, 'slugList']);
-
 });
 // Route::resource('recipes', 'RecipeController');
-Route::resource('recipes', RecipeController::class);
+  Route::get('export', [RecipeController::class, 'export'])->name('export');
+
+  Route::resource('recipes', RecipeController::class);
 // Route::resource('recipes', RecipeController::class);
 // Route::resource('photos', PhotoController::class);
 

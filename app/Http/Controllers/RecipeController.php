@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-
+use XMLWriter;
 // use Session;
 // use Auth;
 class RecipeController extends Controller
@@ -799,9 +799,65 @@ class RecipeController extends Controller
 
     {
       Auth::user()->favorites()->detach($id);
-
         // Auth::user()->favorites()->detach($recipe->id);
-
         return back();
     }
+
+    public function export()
+    {
+      $recipes = Recipe::where('status','=','published')->get();
+      try
+      {
+
+          // WORKING
+          // https://www.php.net/manual/en/function.xmlwriter-start-document.php
+
+            $xml = new XMLWriter(); //begining
+            $xml->openURI('storage/example.xml');//The URI of the resource for the output
+            $xml->setIndent(true);//Toggles indentation on
+            $xml->startDocument('1.0', 'UTF-8'); //Version and encoding of the document as part of the XML declaration
+            // $xml->startElementNs("nl", "CashDeclaration", "http://eu/plaf/afias/cis/cash");
+            // $xml->writeAttributeNs('xmlns','xsi',NULL,'http://www.w3.org.2001/XMLSchema-instance');
+
+            $xml->startElement('nlCashDeclaration');
+            $xml->writeAttributeNs('xmlns','nl',NULL,'http://eu/plaf/afias/cis/cash');
+            $xml->writeAttributeNs('xmlns','xsi',NULL,'http://www.w3.org.2001/XMLSchema-instance');
+            $xml->writeElement('declarationType', 'Declar');
+            $xml->writeElement('declarationRef', 'Reference');
+            $xml->writeElement('declarationDate', 'Date');
+            $xml->writeElement('declarationPlace', 'Place');
+
+              $xml->startElement('bisinessId');
+                $xml->startElement('persons');
+
+                  foreach ($recipes as $recipe) {
+                      $xml->startElement('person');
+                      $xml->writeElement('SLUG', $recipe->slug);
+                      $xml->writeElement('COOK', $recipe->cook_time);
+                      $xml->writeElement('AVAIL', $recipe->availability);
+                      $xml->writeElement('STATUS', $recipe->status);
+                      $xml->endElement();
+                  }
+
+                $xml->endElement();//persons
+              $xml->endElement();//bisinessId
+
+                $xml->writeRaw('<companies/>');//This is working but must be a better way
+
+
+        $xml->endElement();//nlCashDeclaration
+
+        $xml->endDocument();
+
+        $xml->flush();
+
+        Session::flash('success', 'success.');
+      }
+      catch(Exception $e)
+      {
+          Session::flash('error','problem');
+      }
+      return redirect()->back();
+    }
+
 }

@@ -84,28 +84,6 @@
       @endforeach
 
 
-      {{-- <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h4 class="card-header">Ζαχαροπλαστική</h4>
-          <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h4 class="card-header">Ροφήματα</h4>
-          <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div> --}}
     </div>
     <!-- /.row -->
 
@@ -122,73 +100,19 @@
               <h4 class="card-title">
                 <a href="{{route('recipes.show',$recipe->slug)}}">{{$recipe->name}}</a>
               </h4>
-              <p class="card-text">{!!Str::limit($recipe->description, 150, ' (...)') !!}</p>
+              <p class="card-text">{!!Str::limit(strip_tags($recipe->description), 50, '...') !!}</p>
             </div>
           </div>
         </div>
         {{-- @empty
           <div></div> --}}
         @endforeach
-      {{-- <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Two</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Three</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Four</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Five</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Six</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
-          </div>
-        </div>
-      </div> --}}
+
     </div>
     <!-- /.row -->
 
     <!-- Features Section -->
-    <h2 class="headings">Δημοφιλή Συνταγές</h2>
+    <h2 class="headings">Δημοφιλής Συνταγές</h2>
     <div class="row">
       @foreach ($populars as $key => $recipe)
       <div class="col-lg-4 col-sm-6 portfolio-item">
@@ -198,7 +122,8 @@
             <h4 class="card-title">
               <a href="{{route('recipes.show',$recipe->slug)}}">{{$recipe->name}}</a>
             </h4>
-            <p class="card-text">{!!Str::limit($recipe->description, 150, ' (...)') !!}</p>
+            <p class="card-text">{!!Str::limit(strip_tags($recipe->description), 50, '...') !!}</p>
+            {{-- <p class="card-text">{!!Str::limit($recipe->description, 150, '...') !!}</p> --}}
           </div>
         </div>
       </div>

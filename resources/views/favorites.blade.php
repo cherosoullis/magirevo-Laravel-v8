@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="page-header">
-                <h3>My Favorites</h3>
+                <h3>Αγαπημένες Συνταγές</h3>
             </div>
 @if (!empty($myFavorites))
 
@@ -28,10 +28,10 @@
                     @endif
                 </div>
             @empty
-                <p>You have no favorite posts.</p>
+                <p>Δεν έχετε επιλάξει συνταγές για αγαπημένες</p>
             @endforelse
           @else
-            <p>You have no favorite posts.</p>
+            <p>Δεν έχετε επιλάξει συνταγές για αγαπημένες</p>
       @endif
 
          </div>

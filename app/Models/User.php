@@ -13,6 +13,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Events\UserCreatedEvent;
 
 class User extends Authenticatable
 {
@@ -74,4 +75,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Rate::class, 'rates', 'user_id', 'recipe_id')->withTimeStamps();
     }
+
+    // public function roles()
+    // {
+    //     return $this->belongsToMany(Role::class)->withTimeStamps();
+    // }
+
+    protected $dispatchesEvents = [
+      'created' => UserCreatedEvent::class,
+    ];
 }

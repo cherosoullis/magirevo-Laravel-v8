@@ -3,87 +3,6 @@
 
 @section('content')
 
-
-{{-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Modern Business - Start Bootstrap Template</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
-
-</head> --}}
-
-{{-- <body>
-
-  <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Start Bootstrap</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="services.html">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-          <li class="nav-item active dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Portfolio
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-              <a class="dropdown-item active" href="portfolio-item.html">Single Portfolio Item</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Blog
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-              <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-              <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-              <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Other Pages
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-              <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-              <a class="dropdown-item" href="faq.html">FAQ</a>
-              <a class="dropdown-item" href="404.html">404</a>
-              <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav> --}}
-
-  <!-- Page Content -->
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
@@ -117,18 +36,27 @@
           </div>
       @endif
       <div class="d-inline-flex  ml-5">
-        <a href="{{route('recipes.edit', $recipe->slug)}}">  <span style="color: Mediumslateblue;"><i class="ml-5 fas fa-edit fa-2x"></i></span></a>
+        <a href="{{route('export', $recipe->slug)}}">XML Export</a>
       </div>
+      @can('edit recipes')
+        <div class="d-inline-flex  ml-5">
+          <a href="{{route('recipes.edit', $recipe->slug)}}">  <span style="color: Mediumslateblue;"><i class="ml-5 fas fa-edit fa-2x"></i></span></a>
+        </div>
+      @endcan
+      {{-- @if (Auth::check())
+
+      @endif --}}
+
           {!!$recipe->description!!}
 
           <div class="d-flex"><p class="headings">Επίπεδο Δυσκολίας:   </p>
 
             <div class="difficulty ml-2" style="font-family: 'Arial Black'; color: rgb(197,236,231); margin-top: -6px;">
-              <span class="vary-easy {{$recipe->difficulty == 'Πολύ Εύκολο' ? 'red' : ''}}" style="font-size: 25px;font-weight: 1000;" ><i style="background: rgb(250,5,5);" class="fas fa-drumstick-bite"></i></span>
-              <span class="easy {{$recipe->difficulty == 'Εύκολο' ? 'red' : ''}}" style="font-size: 25px;font-weight: 1000;" ><i style="background: rgb(200,5,5);" class="fas fa-drumstick-bite"></i></span>
-              <span class="medium {{$recipe->difficulty == 'Μέτριο' ? 'red' : ''}}" style="font-size: 25px;font-weight: 1000;" ><i style="background: rgb(150,5,5);" class="fas fa-drumstick-bite"></i></span>
-              <span class="hard {{$recipe->difficulty == 'Δύσκολο' ? 'red' : ''}}" style="font-size: 25px;font-weight: 1000;"><i style="background: rgb(100,5,5);"class="fas fa-drumstick-bite"></i></span>
-              <span class="very-hard {{$recipe->difficulty == 'Πολύ Δύσκολο' ? 'red' : ''}}" style="font-size: 25px;font-weight: 1000;"><i style="background: rgb(60,5,5);" class="fas fa-drumstick-bite"></i></span>
+              <span class="vary-easy {{$recipe->difficulty == 'Πολύ Εύκολο' ? 'red' : ''}}" style="font-size: 15px;font-weight: 1000;" ><i style="background: rgb(250,5,5);" class="fas fa-drumstick-bite"></i></span>
+              <span class="easy {{$recipe->difficulty == 'Εύκολο' ? 'red' : ''}}" style="font-size: 15px;font-weight: 1000;" ><i style="background: rgb(200,5,5);" class="fas fa-drumstick-bite"></i></span>
+              <span class="medium {{$recipe->difficulty == 'Μέτριο' ? 'red' : ''}}" style="font-size: 15px;font-weight: 1000;" ><i style="background: rgb(150,5,5);" class="fas fa-drumstick-bite"></i></span>
+              <span class="hard {{$recipe->difficulty == 'Δύσκολο' ? 'red' : ''}}" style="font-size: 15px;font-weight: 1000;"><i style="background: rgb(100,5,5);"class="fas fa-drumstick-bite"></i></span>
+              <span class="very-hard {{$recipe->difficulty == 'Πολύ Δύσκολο' ? 'red' : ''}}" style="font-size: 15px;font-weight: 1000;"><i style="background: rgb(60,5,5);" class="fas fa-drumstick-bite"></i></span>
             </div>
           </div>
             {{-- <div class="difficulty ml-2" style="font-family: 'Arial Black'; margin-top: -30px;">
@@ -140,9 +68,11 @@
             </div>
           </div> --}}
 
-            <div class="d-flex"><p class="headings mr-2">Κουζίνα:</p>{{$recipe->cuisine['name']??'Ν/Α'}}</div>
 
-            <div class="d-flex"><p class="d-inline headings mr-2">Κατηγορία:</p>@foreach ($recipe->categories as $category) {{$category->name}} @endforeach</div>
+
+            <div class="d-flex"><p class="headings mr-2">Κουζίνα:<a href="#" class="badge badge-secondary ml-2" style="font-size: 15px;">{{$recipe->cuisine['name']??'Ν/Α'}}</a></div>
+
+            <div class="d-flex"><p class="d-inline headings mr-2">Κατηγορία:</p> @foreach ($recipe->categories as $category) <a href="#" class="badge badge-secondary mb-3 mr-2" style="font-size: 15px;">{{$category->name}}</a> @endforeach</div>
 
             <div class="d-inline-flex mr-3"><p class=" headings mr-2">Προετοιμασία:</p>{{Str::limit($recipe->prep_time,5,' ')?? 'Ν/Α'}}<i class="ml-2 fas fa-stopwatch fa-lg" style="color: Dodgerblue;"></i></div>
             <div class="d-inline-flex"><p class="headings mr-2">Μαγείρεμα:</p>{{Str::limit($recipe->cook_time,5,' ')?? 'Ν/Α'}}<i class="ml-2 fas fa-stopwatch fa-lg" style="color: Dodgerblue;"></i></div>
@@ -185,7 +115,9 @@
             {{-- <star-rating v-model="rating"></star-rating> --}}
             {{-- <star-rating :recipe="{{$recipe->id}}"
             :rated={{ $recipe->rated() ? 'true' : 'false' }}></star-rating> --}}
-            <rating  :recipe={{ $recipe->id }}></rating>
+            @if (Auth::check())
+              <rating  :recipe={{ $recipe->id }}></rating>
+            @endif
             {{-- <rating :recipe={{ $recipe->id }}></rating> --}}
 
           </div>
