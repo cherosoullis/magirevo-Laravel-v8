@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    {!! SEO::generate(true) !!}
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     {{-- <title>@yield('title')</title> --}}
@@ -60,11 +61,11 @@
                       <li class="nav-item">
                         <a class="nav-link navigation-item" href="{{route('recipes.index')}}">Συνταγές</a>
                       </li>
-                      <li class="nav-item">
+                      {{-- <li class="nav-item">
                         <a class="nav-link navigation-item" href="{{ url('/') }}">Γλωσσάρι</a>
-                      </li>
+                      </li> --}}
                       <li class="nav-item">
-                        <a class="nav-link navigation-item" href="{{ url('/') }}">Contact</a>
+                        <a class="nav-link navigation-item" href="{{ route('contact.create') }}">Contact</a>
                       </li>
                       {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -20,7 +20,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use XMLWriter;
+// use XMLWriter;
+use Artesaos\SEOTools\Facades\SEOTools;
+
 // use Session;
 // use Auth;
 class RecipeController extends Controller
@@ -43,6 +45,13 @@ class RecipeController extends Controller
      */
     public function index()
     {
+      SEOTools::setTitle('Συνταγές Μαγειρικής');
+      SEOTools::setDescription('Υπέροχες συνταγές μαγειρικής');
+      SEOTools::opengraph()->setUrl('https://magirevo.com');
+      SEOTools::setCanonical('https://magirevo.com/recipes');
+      SEOTools::opengraph()->addProperty('type', 'recipes');
+      SEOTools::twitter()->setSite('@magirvo');
+      SEOTools::jsonLd()->addImage('https://magirevo.com/storage/carousel/Healthy_eating.jpg');
       // dd(session()->all());
       $recipes = Recipe::where('status','=','published')->get();
       // dd($recipes);

@@ -54,6 +54,7 @@
     <div class="row">
 
       @foreach ($categories as $key => $category)
+        
         <div class="col-lg-4 mb-4">
           <div class="card h-100">
             {{-- <h4 class="card-header"><a href="{{route('categories.show', $category->id)}}">{{$category->name}}</a></h4> --}}

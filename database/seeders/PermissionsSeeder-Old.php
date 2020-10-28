@@ -39,14 +39,14 @@ class PermissionsSeeder extends Seeder
 
       // create demo users
       $user = \App\Models\User::factory()->create([
-        'name' => 'cook',
-        'email' => 'user@erodotou.com',
+        'name' => 'Elena',
+        'email' => 'elena@erodotou.com',
         'password' => '$2y$10$djQcgjHnU6Vqc.45egjeWuGo.W9nMFu/5m3q1uF8pZOhE4.4Knwc6',
       ]);
       $user->assignRole($cook);
 
       $user = \App\Models\User::factory()->create([
-        'name' => 'Admin',
+        'name' => 'Kypros',
         'email' => 'kypros@erodotou.com',
         'password' => '$2y$10$djQcgjHnU6Vqc.45egjeWuGo.W9nMFu/5m3q1uF8pZOhE4.4Knwc6',
       ]);

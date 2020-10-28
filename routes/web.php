@@ -8,6 +8,7 @@ use App\Http\Controllers\CuisineController;
 use App\Http\Controllers\FoodstaffController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\ContactController;
 
 
 
@@ -58,6 +59,7 @@ Route::group(['middleware' => ['auth']], function() {
   Route::get('ingretientsList', [RecipeController::class, 'ingretientsList']);
   Route::get('slugList', [RecipeController::class, 'slugList']);
 });
+  Route::resource('contact', ContactController::class);
 // Route::resource('recipes', 'RecipeController');
   Route::get('export', [RecipeController::class, 'export'])->name('export');
 
@@ -69,4 +71,4 @@ Route::group(['middleware' => ['auth']], function() {
 // Route::get('user/{id}', [UserController::class, 'show']);
 
 // Route::get('recipes', 'RecipeController@');
-Route::get('categories/{category}','CategoryController@show')->name('categories.show');
+Route::get('categories/{category}',[CategoryController::class, 'show'])->name('categories.show');

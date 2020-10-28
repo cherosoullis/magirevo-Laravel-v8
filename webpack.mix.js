@@ -20,8 +20,8 @@ mix.sass('resources/sass/application.scss', 'public/css');
 
     mix.scripts([
          'resources/js/slider.js',
-         'resources/js/select.js'
-         // 'resources/js/trix.js'
+         'resources/js/select.js',
+         'resources/js/contact.js'
          // 'resources/js/summernote.js',
       ],  'public/js/compine.js');
 
@@ -39,6 +39,7 @@ mix.sass('resources/sass/application.scss', 'public/css');
         'resources/css/recipe.css',
         'resources/css/cookies.css',
         'resources/css/scroll.css',
+        'resources/css/contact.css',
       ], 'public/css/all.css');
 
       mix.styles([

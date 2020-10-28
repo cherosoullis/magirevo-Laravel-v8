@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
           CuisinesTableSeeder::class,
           CategoriesTableSeeder::class,
           FoodstaffsTableSeeder::class,
+          PermissionsTableSeeder::class,
       ]);
         // User::factory(10)->create();
         // $this->call(CuisinesTableSeeder::class);

@@ -27,7 +27,7 @@ class HomeController extends Controller
     // $populars = Recipe::latest()->first();
     $populars = Recipe::where('status','=','published')->orderBy('view_count', 'desc')->take(6)->get();
     // dd($popular);
-    $categories = Category::where('parent_id', 'ASC')->get();
+    $categories = Category::where('parent_id', null)->orderBy('parent_id', 'ASC')->get();
     // dd($categories);
      return view('index', compact('categories', 'recents', 'populars'));
       // return view ('bootstrap.about');
@@ -40,4 +40,6 @@ class HomeController extends Controller
 
     return view('favorites', compact('myFavorites'));
   }
+
+
 }
