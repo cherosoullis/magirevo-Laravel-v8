@@ -20,6 +20,7 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.0",
         "livewire/livewire": "^2.0",
+        "mews/captcha": "^3.2",
         "orangehill/iseed": "^2.6",
         "spatie/laravel-cookie-consent": "^2.12",
         "spatie/laravel-permission": "^3.17",

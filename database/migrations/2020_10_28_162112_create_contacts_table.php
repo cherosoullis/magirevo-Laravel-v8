@@ -17,9 +17,11 @@ class CreateContactsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->string('category');
+            $table->string('category')->nullable();
             $table->string('subject');
             $table->string('comment');
+            $table->string('file')->nullable();
+            // $table->json('viewed')->nullable();//add the id of user who view id to unbold
             $table->timestamps();
         });
     }

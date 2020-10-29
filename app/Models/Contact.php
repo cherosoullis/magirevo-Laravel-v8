@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
     use HasFactory;
+    protected $fillable = [
+    'name',
+    'email',
+    'category',
+    'subject',
+    'comment',
+    'file'
+    // 'viewed'
+];
+// protected $casts = [
+//     'viewed' => 'array',
+// ];
+
+
 }

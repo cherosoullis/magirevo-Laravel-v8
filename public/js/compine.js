@@ -79,3 +79,13 @@ const fileChosen = document.getElementById('file-chosen');
 actualBtn.addEventListener('change', function(){
   fileChosen.textContent = this.files[0].name
 })
+
+$('#reload').click(function () {
+    $.ajax({
+        type: 'GET',
+        url: '../reload-captcha',
+        success: function (data) {
+            $(".captcha span").html(data.captcha);
+        }
+    });
+});

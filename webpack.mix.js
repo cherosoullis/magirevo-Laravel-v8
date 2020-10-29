@@ -21,8 +21,8 @@ mix.sass('resources/sass/application.scss', 'public/css');
     mix.scripts([
          'resources/js/slider.js',
          'resources/js/select.js',
-         'resources/js/contact.js'
-         // 'resources/js/summernote.js',
+         'resources/js/contact.js',
+         'resources/js/captcha.js'
       ],  'public/js/compine.js');
 
       mix.scripts([

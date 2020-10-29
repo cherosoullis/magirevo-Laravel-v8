@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth']], function() {
   Route::get('slugList', [RecipeController::class, 'slugList']);
 });
   Route::resource('contact', ContactController::class);
+  Route::get('reload-captcha', [ContactController::class, 'reloadCaptcha']);
 // Route::resource('recipes', 'RecipeController');
   Route::get('export', [RecipeController::class, 'export'])->name('export');
 

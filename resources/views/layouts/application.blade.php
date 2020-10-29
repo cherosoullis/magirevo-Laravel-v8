@@ -101,8 +101,10 @@
                                 <div class="dropdown-menu dropdown-menu-right submenu" aria-labelledby="navbarDropdown">
                                   <a class="dropdown-item navigation-item" href="{{ url('favorite-recipes') }}">Αγαπημένες συνταγές</a>
                                   @role('super-admin')
-                                  <a class="dropdown-item navigation-item" href="{{ url('categories') }}">Κατηγορίες</a>
-                                  <a class="dropdown-item navigation-item" href="{{ url('foodstaffs') }}">Συστατικά</a>
+                                    <a class="dropdown-item navigation-item" href="{{ url('categories') }}">Κατηγορίες</a>
+                                    <a class="dropdown-item navigation-item" href="{{ url('foodstaffs') }}">Συστατικά</a>
+                                    <a class="dropdown-item navigation-item" href="{{ route('contact.index') }}">Μηνύματα</a>
+
                                   {{-- @else
                                       I am not a writer... --}}
                                   @endrole
