@@ -49,6 +49,7 @@ Route::group(['middleware' => ['auth']], function() {
 
   Route::view('foodstaffs','livewire.foodstaffs.home')->middleware('auth');
   Route::view('categories','livewire.categories.home')->middleware('auth');
+  Route::get('recipes/unapproved', [RecipeController::class,'unapproved'])->name('recipes.unapproved');
 
   Route::resource('ingredients', 'IngredientController');
   Route::resource('tags', 'TagController');
@@ -62,7 +63,7 @@ Route::group(['middleware' => ['auth']], function() {
   Route::resource('contact', ContactController::class);
   Route::get('reload-captcha', [ContactController::class, 'reloadCaptcha']);
 // Route::resource('recipes', 'RecipeController');
-  Route::get('export', [RecipeController::class, 'export'])->name('export');
+  // Route::get('export', [RecipeController::class, 'export'])->name('export');//for xml
 
   Route::resource('recipes', RecipeController::class);
 // Route::resource('recipes', RecipeController::class);

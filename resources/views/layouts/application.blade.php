@@ -65,7 +65,7 @@
                         <a class="nav-link navigation-item" href="{{ url('/') }}">Γλωσσάρι</a>
                       </li> --}}
                       <li class="nav-item">
-                        <a class="nav-link navigation-item" href="{{ route('contact.create') }}">Contact</a>
+                        <a class="nav-link navigation-item" href="{{ route('contact.create') }}">Επικοινωνία</a>
                       </li>
                       {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -101,6 +101,7 @@
                                 <div class="dropdown-menu dropdown-menu-right submenu" aria-labelledby="navbarDropdown">
                                   <a class="dropdown-item navigation-item" href="{{ url('favorite-recipes') }}">Αγαπημένες συνταγές</a>
                                   @role('super-admin')
+                                    <a class="dropdown-item navigation-item" href="{{ route('recipes.unapproved') }}">Μη Αποδεκτές</a>
                                     <a class="dropdown-item navigation-item" href="{{ url('categories') }}">Κατηγορίες</a>
                                     <a class="dropdown-item navigation-item" href="{{ url('foodstaffs') }}">Συστατικά</a>
                                     <a class="dropdown-item navigation-item" href="{{ route('contact.index') }}">Μηνύματα</a>
