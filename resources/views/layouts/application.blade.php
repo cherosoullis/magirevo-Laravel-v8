@@ -82,11 +82,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link drop-menu navigation-item" href="{{ route('login') }}">Σύνδεση</a>
+                                <a class="nav-link drop-menu navigation-item" data-toggle="modal" data-target="#loginModal" href="{{ route('login') }}">Σύνδεση</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link drop-menu navigation-item" href="{{ route('register') }}">Εγγραφή</a>
+                                    <a class="nav-link drop-menu navigation-item" data-toggle="modal" data-target="#registerModal" href="{{ route('register') }}">Εγγραφή</a>
                                 </li>
                             @endif
                         @else
@@ -99,6 +99,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right submenu" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item navigation-item" href="{{ route('my-recipes') }}">Οι συνταγές μου</a>
                                   <a class="dropdown-item navigation-item" href="{{ url('favorite-recipes') }}">Αγαπημένες συνταγές</a>
                                   @role('super-admin')
                                     <a class="dropdown-item navigation-item" href="{{ route('recipes.unapproved') }}">Μη Αποδεκτές</a>
@@ -132,6 +133,7 @@
         <main class="pt-4">
             @yield('content')
         </main>
+
     </div>
     <!-- Compine JS -->
     <script src="{{ asset('js/compine.js') }}" defer></script>
@@ -146,5 +148,161 @@
     <livewire:scripts />
   {{-- @include('cookieConsent::index') --}}
 
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Σύνδεση</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{-- <div style="padding:20px;">
+            <div class=" d-flex justify-content-center"> --}}
+                @if (session('status'))
+                    <div class="mb-4 font-medium text-sm text-green-600">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                {{-- <div class="card" style="width: 18rem;">
+                  <div class="card-body"> --}}
+
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+
+                    <div class="form-group">
+                      <label class="label" value="Email" for="email">Ηλεκτρονικό Ταχυρομείο</label>
+                      <input type="email" name="email"id="email" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" required autofocus value="{{old('email')}}">
+                      <small id="emailHelp" class="form-text text-muted">Δεν θα αποκαλύψουμε το Ηλ. Ταχυδρομείο σας σε κανένα</small>
+                        @error('email')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                      <label class="label" value="Password" for="password">Κωδικός</label>
+                      <input type="password" name="password" id="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" required autocomplete="current-password">
+                        @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="block mt-4">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="form-checkbox" name="remember">
+                            <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center justify-end mt-4">
+                        @if (Route::has('password.request'))
+                            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                                {{ __('Forgot your password?') }}
+                            </a>
+                        @endif
+                        {{-- <button type="submit" class="btn btn-primary submit-btn hvr-grow m-5">Είσοδος</button> --}}
+                        <div class="modal-footer">
+                          {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Κλείσιμο</button> --}}
+                          <button type="submit" class="btn btn-primary submit-btn">Είσοδος</button>
+                        </div>
+                    </div>
+                </form>
+              {{-- </div>
+            </div>
+          </div>
+        </div> --}}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Εγγραφή</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{-- <div style="padding:20px;">
+            <div class=" d-flex justify-content-center"> --}}
+                @if (session('status'))
+                    <div class="mb-4 font-medium text-sm text-green-600">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                {{-- <div class="card" style="width: 18rem;">
+                  <div class="card-body"> --}}
+
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+
+                    <div class="form-group">
+                      <label class="label" value="Name" for="name">Όνομα</label>
+                      <input type="text" name="name"id="name" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" required autofocus value="{{old('name')}}">
+                      <small id="emailHelp" class="form-text text-muted">Δεν θα αποκαλύψουμε το Ηλ. Ταχυδρομείο σας σε κανένα</small>
+                        @error('email')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                      <label class="label" value="Email" for="email">Ηλεκτρονικό Ταχυρομείο</label>
+                      <input type="email" name="email"id="email" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" required autofocus value="{{old('password')}}">
+                      <small id="emailHelp" class="form-text text-muted">Δεν θα αποκαλύψουμε το Ηλ. Ταχυδρομείο σας σε κανένα</small>
+                        @error('email')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                      <label class="label" value="Password" for="password">Κωδικός</label>
+                      <input type="password" name="password" id="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" required autocomplete="current-password">
+                        @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                      <label class="label" value="Password" for="password">Επιβεβαίωση Κωδικού</label>
+                      <input type="password" name="password_confirmation" id="password" class="form-control {{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" required autocomplete="current-password">
+                        @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="block mt-4">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="form-checkbox" name="remember">
+                            <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center justify-end mt-4">
+                        @if (Route::has('password.request'))
+                            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                                {{ __('Forgot your password?') }}
+                            </a>
+                        @endif
+                        <button type="submit" class="btn btn-primary submit-btn hvr-grow m-5">Είσοδος</button>
+
+                    </div>
+                </form>
+              {{-- </div>
+            </div>
+          </div>
+        </div> --}}
+        </div>
+
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,43 +1,72 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.application')
 
-        <x-jet-validation-errors class="mb-4" />
+@section('content')
+  <div style="padding:20px;">
+    <div class=" d-flex justify-content-center">
+        @if (session('status'))
+            <div class="mb-4 font-medium text-sm text-green-600">
+                {{ session('status') }}
+            </div>
+        @endif
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <div>
-                <x-jet-label value="Name" />
-                <x-jet-input class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <div class="form-group">
+              <label class="label" value="Name" for="name">Όνομα</label>
+              <input type="text" name="name"id="name" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" required autofocus value="{{old('name')}}">
+              <small id="emailHelp" class="form-text text-muted">Δεν θα αποκαλύψουμε το Ηλ. Ταχυδρομείο σας σε κανένα</small>
+                @error('email')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
-            <div class="mt-4">
-                <x-jet-label value="Email" />
-                <x-jet-input class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            <div class="form-group">
+              <label class="label" value="Email" for="email">Ηλεκτρονικό Ταχυρομείο</label>
+              <input type="email" name="email"id="email" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" required autofocus value="{{old('password')}}">
+              <small id="emailHelp" class="form-text text-muted">Δεν θα αποκαλύψουμε το Ηλ. Ταχυδρομείο σας σε κανένα</small>
+                @error('email')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
-            <div class="mt-4">
-                <x-jet-label value="Password" />
-                <x-jet-input class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            <div class="form-group">
+              <label class="label" value="Password" for="password">Κωδικός</label>
+              <input type="password" name="password" id="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" required autocomplete="current-password">
+                @error('password')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
-            <div class="mt-4">
-                <x-jet-label value="Confirm Password" />
-                <x-jet-input class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            <div class="form-group">
+              <label class="label" value="Password" for="password">Επιβεβαίωση Κωδικού</label>
+              <input type="password" name="password_confirmation" id="password" class="form-control {{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" required autocomplete="current-password">
+                @error('password')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="block mt-4">
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox" name="remember">
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
+                @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+                <button type="submit" class="btn btn-primary submit-btn hvr-grow m-5">Είσοδος</button>
 
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
             </div>
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection

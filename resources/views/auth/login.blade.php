@@ -1,28 +1,34 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.application')
 
-        <x-jet-validation-errors class="mb-4" />
-
+@section('content')
+  <div style="padding:20px;">
+    <div class=" d-flex justify-content-center">
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">
                 {{ session('status') }}
             </div>
         @endif
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <div>
-                <x-jet-label value="Email" />
-                <x-jet-input class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <div class="form-group">
+              <label class="label" value="Email" for="email">Ηλεκτρονικό Ταχυρομείο</label>
+              <input type="email" name="email"id="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus value="{{old('email')}}">
+              <small id="emailHelp" class="form-text text-muted">Δεν θα αποκαλύψουμε το Ηλ. Ταχυδρομείο σας σε κανένα</small>
+                @error('email')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
-            <div class="mt-4">
-                <x-jet-label value="Password" />
-                <x-jet-input class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+            <div class="form-group">
+              <label class="label" value="Password" for="password">Κωδικός</label>
+              <input type="password" name="password" id="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" required autocomplete="current-password">
+                @error('password')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="block mt-4">
@@ -38,11 +44,12 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
+                <button type="submit" class="btn btn-primary submit-btn hvr-grow m-5">Είσοδος</button>
 
-                <x-jet-button class="ml-4">
-                    {{ __('Login') }}
-                </x-jet-button>
             </div>
         </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection

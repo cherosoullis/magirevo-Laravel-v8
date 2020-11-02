@@ -9,7 +9,7 @@ use App\Http\Controllers\FoodstaffController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ContactController;
-
+use App\Http\Controllers\IngredientController;
 
 
 /*
@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth']], function() {
   // Route::post('favorite/{recipe}', 'RecipeController@favoriteRecipe');
   // Route::post('unfavorite/{recipe}', 'RecipeController@unFavoriteRecipe');
   // Route::get('favorite-recipes', 'HomeController@myFavorites');
+  Route::get('my-recipes', [RecipeController::class, 'my_recipes'])->name('my-recipes');
   Route::post('favorite/{recipe}', [RecipeController::class, 'favoriteRecipe']);
   Route::post('rate/{recipe}/{rate}/{comment}', [RecipeController::class, 'rateRecipe']);
   Route::post('unfavorite/{recipe}', [RecipeController::class, 'unFavoriteRecipe']);
@@ -51,9 +52,9 @@ Route::group(['middleware' => ['auth']], function() {
   Route::view('categories','livewire.categories.home')->middleware('auth');
   Route::get('recipes/unapproved', [RecipeController::class,'unapproved'])->name('recipes.unapproved');
 
-  Route::resource('ingredients', 'IngredientController');
-  Route::resource('tags', 'TagController');
-  Route::resource('reviews', 'ReviewController');
+  Route::resource('ingredients', IngredientController::class);
+  Route::resource('tags', TagController::class);
+  Route::resource('reviews', ReviewController::class);
 
   // Route::get('ingretientsList','RecipeController@ingretientsList');//get list for drop down
   // Route::get('slugList','RecipeController@slugList');//get slug to check if similar exists

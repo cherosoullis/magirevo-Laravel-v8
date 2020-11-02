@@ -818,6 +818,12 @@ class RecipeController extends Controller
       // dd($recipes);
         return view('recipe.unapproved', compact('recipes'));
     }
+    public function my_recipes()
+    {
+        $recipes = Recipe::where('user_id','=',Auth::user()->id)->get();
+      // dd($recipes);
+        return view('recipe.myRecipes', compact('recipes'));
+    }
 
     // public function export()
     // {
